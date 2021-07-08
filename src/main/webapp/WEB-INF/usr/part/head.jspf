@@ -1,0 +1,125 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>${pageTitle}|JSP BOARD</title>
+
+<!-- 모바일에서 디자인이 축소되지 않게 하기 위한 코드 -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- 폰트어썸 불러오기 -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+<!-- 데이지 UI 불러오기 -->
+<link
+	href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1/dist/tailwind.min.css"
+	rel="stylesheet" type="text/css" />
+<link href="https://cdn.jsdelivr.net/npm/daisyui@1.4.0/dist/full.css"
+	rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resource/font.css" />
+</head>
+
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resource/common.css" />
+</head>
+
+<body>
+
+	<header class="top-bar h-20 font-bold">
+		<div class="h-full container mx-auto flex">
+			<a href="/"
+				class="top-bar__logo flex items-center px-4 hover:underline hover:text-red-500">
+				<span>
+					<i class="far fa-lemon"></i>
+				</span>
+				&nbsp;
+				<span> 레몬 커뮤니티 </span>
+			</a>
+
+			<div class="flex-grow"></div>
+
+			<nav class="top-bar__menu-box-1">
+				<ul class="flex h-full">
+					<li>
+						<a href="#"
+							class="h-full flex items-center px-4 hover:underline hover:text-red-500">
+							<span>
+								<i class="fas fa-home"></i>
+							</span>
+							&nbsp;
+							<span>HOME</span>
+						</a>
+					</li>
+					<li>
+						<a href="#"
+							class="h-full flex items-center px-4 hover:underline hover:text-red-500">
+							<span>
+								<i class="fas fa-flag"></i>
+							</span>
+							&nbsp;
+							<span>NOTICE LIST</span>
+						</a>
+					</li>
+					<li>
+						<a href="#"
+							class="h-full flex items-center px-4 hover:underline hover:text-red-500">
+							<span>
+								<i class="fab fa-free-code-camp"></i>
+							</span>
+							&nbsp;
+							<span>FREE LIST</span>
+						</a>
+					</li>
+					<c:if test="${rq.notLogined}">
+						<li>
+							<a href="../member/login"
+								class="h-full flex items-center px-4 hover:underline hover:text-red-500">
+								<span>
+									<i class="fas fa-sign-in-alt"></i>
+								</span>
+								&nbsp;
+								<span>LOGIN</span>
+							</a>
+						</li>
+						<li>
+							<a href="#"
+								class="h-full flex items-center px-4 hover:underline hover:text-red-500">
+								<span>
+									<i class="fas fa-user-plus"></i>
+								</span>
+								<span>JOIN</span>
+							</a>
+						</li>
+					</c:if>
+					<c:if test="${rq.logined}">
+						<li>
+							<a href="../member/doLogout"
+								class="h-full flex items-center px-4 hover:underline hover:text-red-500">
+								<span>
+									<i class="fas fa-sign-out-alt"></i>
+								</span>
+								&nbsp;
+								<span>LOGOUT</span>
+							</a>
+						</li>
+						<li>
+							<a href="#"
+								class="h-full flex items-center px-4 hover:underline hover:text-red-500">
+								<span>
+									<i class="fas fa-user"></i>
+								</span>
+								<span>MY PAGE</span>
+							</a>
+						</li>
+					</c:if>
+				</ul>
+			</nav>
+		</div>
+	</header>
