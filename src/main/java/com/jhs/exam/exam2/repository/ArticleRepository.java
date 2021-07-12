@@ -22,13 +22,27 @@ public class ArticleRepository {
 		return id;
 	}
 
-	public List<Article> getForPrintArticles(int limitFrom, int limitTake) {
+	public List<Article> getForPrintArticles(String searchKeywordTypeCode, String searchKeyword, int limitFrom, int limitTake) {
 		SecSql sql = new SecSql();
 		sql.append("SELECT A.*");
 		sql.append(", IFNULL(M.nickname, '삭제된회원') AS extra__writerName");
 		sql.append("FROM article AS A");
 		sql.append("LEFT JOIN member M");
 		sql.append("ON A.memberId = M.id");
+		sql.append("WHERE 1");
+		
+		if (searchKeyword != null && searchKeyword.length() > 0) {
+			switch (searchKeywordTypeCode) {
+			case "body":
+				sql.append("AND A.body LIKE CONCAT('%', ?, '%')", searchKeyword);
+				break;
+			case "title":
+			default:
+				sql.append("AND A.title LIKE CONCAT('%', ?, '%')", searchKeyword);
+				break;
+			}
+		}
+		
 		sql.append("ORDER BY A.id DESC");
 		sql.append("LIMIT ?, ?", limitFrom, limitTake);
 		
@@ -70,10 +84,24 @@ public class ArticleRepository {
 		return MysqlUtil.update(sql);
 	}
 
-	public int getArticlesCount() {
+	public int getArticlesCount(String searchKeywordTypeCode, String searchKeyword) {
 		SecSql sql = new SecSql();
 		sql.append("SELECT COUNT(*) AS cnt");
 		sql.append("FROM article AS A");
+		
+		sql.append("WHERE 1");
+
+		if (searchKeyword != null && searchKeyword.length() > 0) {
+			switch (searchKeywordTypeCode) {
+			case "body":
+				sql.append("AND A.body LIKE CONCAT('%', ?, '%')", searchKeyword);
+				break;
+			case "title":
+			default:
+				sql.append("AND A.title LIKE CONCAT('%', ?, '%')", searchKeyword);
+				break;
+			}
+		}
 
 		return MysqlUtil.selectRowIntValue(sql);
 	}
