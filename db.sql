@@ -114,3 +114,25 @@ ADD COLUMN dislikeCount INT(10) UNSIGNED NOT NULL DEFAULT 0 AFTER `body`;
 UPDATE article
 SET memberId = 2,
 boardId = 2;
+
+INSERT INTO article
+(regDate, updateDate, boardId, memberId, title, `body`)
+SELECT 
+NOW(),
+NOW(),
+CAST(RAND() * 2 AS SIGNED) + 1,
+CAST(RAND() * 2 AS SIGNED) + 1,
+CONCAT('제목--', UUID()),
+CONCAT('내용--', UUID())
+FROM article;
+
+SELECT COUNT(*) FROM article WHERE id <= 120;
+SELECT id
+FROM article
+ORDER BY id ASC
+LIMIT 100;
+DELETE FROM article WHERE id > 157;
+
+SELECT * FROM article;
+
+DESC article;
