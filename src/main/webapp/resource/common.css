@@ -40,10 +40,11 @@
 @media ( max-width: 640px ) {
   .sm\:col-span-3 {
     grid-column: span 3 / span 3;
-  } 
-  
-  .page-menu {
-  text-align:center;
   }
-  
+}
+
+.page-menu {
+  display: flex;
+  justify-content: center;
+  padding:30px 0;
 }
