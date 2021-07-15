@@ -115,24 +115,16 @@ UPDATE article
 SET memberId = 2,
 boardId = 2;
 
+/*
+# 테스트 게시물 만들기
 INSERT INTO article
 (regDate, updateDate, boardId, memberId, title, `body`)
 SELECT 
 NOW(),
 NOW(),
-CAST(RAND() * 2 AS SIGNED) + 1,
-CAST(RAND() * 2 AS SIGNED) + 1,
-CONCAT('제목--', UUID()),
-CONCAT('내용--', UUID())
+CAST(RAND() * (2 - 1) AS SIGNED) + 1,
+CAST(RAND() * (2 - 1) AS SIGNED) + 1,
+CONCAT('제목--', RAND()),
+CONCAT('내용--', RAND())
 FROM article;
-
-SELECT COUNT(*) FROM article WHERE id <= 120;
-SELECT id
-FROM article
-ORDER BY id ASC
-LIMIT 100;
-DELETE FROM article WHERE id > 157;
-
-SELECT * FROM article;
-
-DESC article;
+*/
