@@ -80,8 +80,6 @@
 				
 				<div class="page-menu">
 					<c:set var="baseUri" value="?boardId=${boardId}" />
-
-					[${baseUri}]
 				
 					<c:set var="pageMenuArmSize" value="7" />
 					<c:set var="startPage"
