@@ -22,7 +22,7 @@ public class ArticleRepository {
 		return id;
 	}
 
-	public List<Article> getForPrintArticles(String searchKeywordTypeCode, String searchKeyword, int limitFrom, int limitTake) {
+	public List<Article> getForPrintArticles(int boardId, String searchKeywordTypeCode, String searchKeyword, int limitFrom, int limitTake) {
 		SecSql sql = new SecSql();
 		sql.append("SELECT A.*");
 		sql.append(", IFNULL(M.nickname, '삭제된회원') AS extra__writerName");
@@ -41,6 +41,10 @@ public class ArticleRepository {
 				sql.append("AND A.title LIKE CONCAT('%', ?, '%')", searchKeyword);
 				break;
 			}
+		}
+		
+		if (boardId != 0) {
+			sql.append("AND A.boardId = ?", boardId);
 		}
 		
 		sql.append("ORDER BY A.id DESC");
@@ -84,7 +88,7 @@ public class ArticleRepository {
 		return MysqlUtil.update(sql);
 	}
 
-	public int getArticlesCount(String searchKeywordTypeCode, String searchKeyword) {
+	public int getArticlesCount(int boardId, String searchKeywordTypeCode, String searchKeyword) {
 		SecSql sql = new SecSql();
 		sql.append("SELECT COUNT(*) AS cnt");
 		sql.append("FROM article AS A");
@@ -101,6 +105,10 @@ public class ArticleRepository {
 				sql.append("AND A.title LIKE CONCAT('%', ?, '%')", searchKeyword);
 				break;
 			}
+		}
+		
+		if (boardId != 0) {
+			sql.append("AND A.boardId = ?", boardId);
 		}
 
 		return MysqlUtil.selectRowIntValue(sql);
