@@ -44,6 +44,7 @@
 				</script>
 				<form action="../member/doLogin" method="POST"
 					onsubmit="MemberLogin__submit(this); return false;">
+					<input type="hidden" name="redirectUri" value="${param.afterLoginUri}" />
 					
 					<div class="form-control">
 						<label class="label">

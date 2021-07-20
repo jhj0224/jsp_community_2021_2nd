@@ -46,7 +46,7 @@
 							</select>
 							
 							<script>
-							$('.section-article-write select[name="searchKeywordTypeCode"]').val(rqBaseTypeAttrMapJsonStr.searchKeywordTypeCode);
+							$('.section-article-write select[name="searchKeywordTypeCode"]').val(rqBaseTypeAttrs.searchKeywordTypeCode);
 							</script>
 							
 						</div>

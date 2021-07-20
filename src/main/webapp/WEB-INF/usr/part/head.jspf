@@ -35,7 +35,7 @@
 
 <script>
 const rqParams = ${rq.paramMapJsonStr};
-const rqBaseTypeAttrMapJsonStr = ${rq.baseTypeAttrMapJsonStr};
+const rqBaseTypeAttrs = ${rq.baseTypeAttrMapJsonStr};
 </script>
 
 <body>
@@ -87,7 +87,7 @@ const rqBaseTypeAttrMapJsonStr = ${rq.baseTypeAttrMapJsonStr};
 					</li>
 					<c:if test="${rq.notLogined}">
 						<li>
-							<a href="../member/login"
+							<a href="../member/login?afterLoginUri=${rq.encodedCurrentUri}"
 								class="h-full flex items-center px-4 hover:underline hover:text-red-500">
 								<span>
 									<i class="fas fa-sign-in-alt"></i>
