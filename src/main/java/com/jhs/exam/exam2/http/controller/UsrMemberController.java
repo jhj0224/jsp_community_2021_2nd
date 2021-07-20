@@ -56,7 +56,10 @@ public class UsrMemberController extends Controller {
 		Member member = (Member) loginRd.getBody().get("member");
 
 		rq.setSessionAttr("loginedMemberJson", Ut.toJson(member, ""));
-		rq.replace(loginRd.getMsg(), "../article/list");
+		
+		String redirectUri = rq.getParam("redirectUri", "../article/list");
+
+		rq.replace(loginRd.getMsg(), redirectUri);
 	}
 
 	private void actionShowLogin(Rq rq) {

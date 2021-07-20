@@ -107,7 +107,7 @@ public class Rq {
 	public String getParam(String paramName, String defaultValue) {
 		String paramValue = req.getParameter(paramName);
 
-		if (paramValue == null) {
+		if (paramValue == null || paramValue.trim().length() == 0) {
 			return defaultValue;
 		}
 
@@ -257,5 +257,19 @@ public class Rq {
 
 	public String getEncodedCurrentUri() {
 		return Ut.getUriEncoded(getCurrentUri());
+	}
+	
+	public String getEncodedAfterLoginUri() {
+		return Ut.getUriEncoded(getAfterLoginUri());
+	}
+
+	public String getAfterLoginUri() {
+		String afterLoginUri = getParam("afterLoginUri", "");
+
+		if ( afterLoginUri.length() > 0 ) {
+			return afterLoginUri;
+		}
+
+		return getCurrentUri();
 	}
 }
