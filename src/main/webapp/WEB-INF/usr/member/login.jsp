@@ -5,18 +5,18 @@
 <c:set var="pageTitle" value="로그인" />
 <%@ include file="../part/head.jspf"%>
 
-<section class="section section-member-login px-4">
-	<div class="container mx-auto">
+<section class="section section-member-login flex-grow flex justify-center items-center">
+	<div class="w-full max-w-md px-2">
 
 		<div class="card bordered shadow-lg">
 			<div class="card-title">
-				<a href="javascript:history.back();" class="cursor-pointer">
-					<i class="fas fa-chevron-left"></i>
-				</a>
+				<span>
+					<i class="fas fa-sign-in-alt"></i>
+				</span>
 				<span>로그인</span>
 			</div>
 
-			<div class="px-4 py-4">
+			<div class="px-2 py-4">
 				<script>
 					let MemberLogin__submitDone = false;
 					function MemberLogin__submit(form) {
