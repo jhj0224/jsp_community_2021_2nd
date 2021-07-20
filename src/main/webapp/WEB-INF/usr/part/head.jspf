@@ -6,13 +6,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>${pageTitle} | JSP BOARD</title>
+<title>${pageTitle}| JSP BOARD</title>
 
 <!-- 모바일에서 디자인이 축소되지 않게 하기 위한 코드 -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- 제이쿼리 불러오기 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <!-- 폰트어썸 불러오기 -->
 <link rel="stylesheet"
@@ -33,99 +34,66 @@
 	href="${pageContext.request.contextPath}/resource/common.css" />
 </head>
 
-<script>
+<%="<script>"%>
 const rqParams = ${rq.paramMapJsonStr};
+<%="</script>"%>
+<%="<script>"%>
 const rqBaseTypeAttrs = ${rq.baseTypeAttrMapJsonStr};
-</script>
+<%="</script>"%>
 
 <body>
 
-	<header class="top-bar h-20 font-bold">
+	<header class="top-bar h-10 font-bold">
 		<div class="h-full container mx-auto flex">
 			<a href="/"
 				class="top-bar__logo flex items-center px-4 hover:underline hover:text-red-500">
-				<span>
-					<i class="far fa-lemon"></i>
-				</span>
-				&nbsp;
-				<span> 레몬 커뮤니티 </span>
+				<span> <i class="far fa-lemon"></i>
+			</span> <span class="hidden md:block">&nbsp;레몬 커뮤니티</span>
 			</a>
 
 			<div class="flex-grow"></div>
 
 			<nav class="top-bar__menu-box-1">
 				<ul class="flex h-full">
-					<li>
-						<a href="#"
-							class="h-full flex items-center px-4 hover:underline hover:text-red-500">
-							<span>
-								<i class="fas fa-home"></i>
-							</span>
-							&nbsp;
-							<span>HOME</span>
-						</a>
-					</li>
-					<li>
-						<a href="../article/list?boardId=1"
-							class="h-full flex items-center px-4 hover:underline hover:text-red-500">
-							<span>
-								<i class="fas fa-flag"></i>
-							</span>
-							&nbsp;
-							<span>NOTICE LIST</span>
-						</a>
-					</li>
-					<li>
-						<a href="../article/list?boardId=2"
-							class="h-full flex items-center px-4 hover:underline hover:text-red-500">
-							<span>
-								<i class="fab fa-free-code-camp"></i>
-							</span>
-							&nbsp;
-							<span>FREE LIST</span>
-						</a>
-					</li>
+					<li><a href="#"
+						class="h-full flex items-center px-4 hover:underline hover:text-red-500">
+							<span> <i class="fas fa-home"></i>
+						</span> <span class="hidden sm:block">&nbsp;HOME</span>
+					</a></li>
+					<li><a href="../article/list?boardId=1"
+						class="h-full flex items-center px-4 hover:underline hover:text-red-500">
+							<span> <i class="fas fa-flag"></i>
+						</span> <span class="hidden sm:block">&nbsp;NOTICE LIST</span>
+					</a></li>
+					<li><a href="../article/list?boardId=2"
+						class="h-full flex items-center px-4 hover:underline hover:text-red-500">
+							<span> <i class="fab fa-free-code-camp"></i>
+						</span> <span class="hidden sm:block">&nbsp;FREE LIST</span>
+					</a></li>
 					<c:if test="${rq.notLogined}">
-						<li>
-							<a href="../member/login?afterLoginUri=${rq.encodedAfterLoginUri}"
-								class="h-full flex items-center px-4 hover:underline hover:text-red-500">
-								<span>
-									<i class="fas fa-sign-in-alt"></i>
-								</span>
-								&nbsp;
-								<span>LOGIN</span>
-							</a>
-						</li>
-						<li>
-							<a href="#"
-								class="h-full flex items-center px-4 hover:underline hover:text-red-500">
-								<span>
-									<i class="fas fa-user-plus"></i>
-								</span>
-								<span>JOIN</span>
-							</a>
-						</li>
+						<li><a
+							href="../member/login?afterLoginUri=${rq.encodedAfterLoginUri}"
+							class="h-full flex items-center px-4 hover:underline hover:text-red-500">
+								<span> <i class="fas fa-sign-in-alt"></i>
+							</span> <span class="hidden sm:block">&nbsp;LOGIN</span>
+						</a></li>
+						<li><a href="#"
+							class="h-full flex items-center px-4 hover:underline hover:text-red-500">
+								<span> <i class="fas fa-user-plus"></i>
+							</span> <span class="hidden sm:block">&nbsp;JOIN</span>
+						</a></li>
 					</c:if>
 					<c:if test="${rq.logined}">
-						<li>
-							<a href="../member/doLogout"
-								class="h-full flex items-center px-4 hover:underline hover:text-red-500">
-								<span>
-									<i class="fas fa-sign-out-alt"></i>
-								</span>
-								&nbsp;
-								<span>LOGOUT</span>
-							</a>
-						</li>
-						<li>
-							<a href="#"
-								class="h-full flex items-center px-4 hover:underline hover:text-red-500">
-								<span>
-									<i class="fas fa-user"></i>
-								</span>
-								<span>MY PAGE</span>
-							</a>
-						</li>
+						<li><a href="../member/doLogout"
+							class="h-full flex items-center px-4 hover:underline hover:text-red-500">
+								<span> <i class="fas fa-sign-out-alt"></i>
+							</span> &nbsp; <span>LOGOUT</span>
+						</a></li>
+						<li><a href="#"
+							class="h-full flex items-center px-4 hover:underline hover:text-red-500">
+								<span> <i class="fas fa-user"></i>
+							</span> <span>MY PAGE</span>
+						</a></li>
 					</c:if>
 				</ul>
 			</nav>
