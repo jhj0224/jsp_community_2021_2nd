@@ -35,6 +35,7 @@
 
 <script>
 const rqParams = ${rq.paramMapJsonStr};
+const rqBaseTypeAttrMapJsonStr = ${rq.baseTypeAttrMapJsonStr};
 </script>
 
 <body>

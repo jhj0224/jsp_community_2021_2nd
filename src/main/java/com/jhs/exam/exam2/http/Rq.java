@@ -198,7 +198,7 @@ public class Rq {
 		return attrValue;
 	}
 	
-	public Map<String, Object> getParamMap() {
+	private Map<String, Object> getParamMap() {
 		Map<String, Object> params = new HashMap<>();
 
 		Enumeration<String> parameterNames = req.getParameterNames();
@@ -215,5 +215,32 @@ public class Rq {
 
 	public String getParamMapJsonStr() {
 		return Ut.toJson(getParamMap(), "");
+	}
+	
+	private Map<String, Object> getBaseTypeAttrMap() {
+		Map<String, Object> attrs = new HashMap<>();
+
+		Enumeration<String> attrNames = req.getAttributeNames();
+
+		while (attrNames.hasMoreElements()) {
+			String attrName = attrNames.nextElement();
+			Object attrValue = req.getAttribute(attrName);
+
+			if ( attrName.equals("rq") ) {
+				continue;
+			}
+
+			if ( Ut.isBaseType(attrValue) == false ) {
+				continue;
+			}
+
+			attrs.put(attrName, attrValue);
+		}
+
+		return attrs;
+	}
+
+	public String getBaseTypeAttrMapJsonStr() {
+		return Ut.toJson(getBaseTypeAttrMap(), "");
 	}
 }
