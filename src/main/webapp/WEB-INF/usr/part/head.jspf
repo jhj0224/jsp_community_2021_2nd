@@ -53,7 +53,7 @@ const rqParams = ${rq.paramMapJsonStr};
 						<i class="fas fa-pen"></i>
 					</span>
 				</a>
-
+				
 				<a class="btn-show-search-bar flex items-center px-4 hover:text-red-500">
 					<span>
 						<i class="fas fa-search"></i>
@@ -94,6 +94,25 @@ const rqParams = ${rq.paramMapJsonStr};
 								<span>&nbsp;HOME</span>
 							</a>
 						</li>
+						
+						<li>
+							<a href="../article/write" class="flex py-2 hover:underline hover:text-red-500">
+								<span>
+									<i class="fas fa-pen"></i>
+								</span>
+								<span>&nbsp;WRITE</span>
+							</a>
+						</li>
+						
+						<li>
+							<a class="btn-show-search-bar flex py-2 hover:underline hover:text-red-500">
+								<span>
+									<i class="fas fa-search"></i>
+								</span>
+								<span>&nbsp;SEARCH</span>
+							</a>
+						</li>
+						
 						<li>
 							<a href="../article/list?boardId=1" class="flex py-2 hover:underline hover:text-red-500">
 								<span>
@@ -102,6 +121,7 @@ const rqParams = ${rq.paramMapJsonStr};
 								<span>&nbsp;NOTICE LIST</span>
 							</a>
 						</li>
+						
 						<li>
 							<a href="../article/list?boardId=2" class="flex py-2 hover:underline hover:text-red-500">
 								<span>
@@ -169,15 +189,25 @@ const rqParams = ${rq.paramMapJsonStr};
 								<span>
 									<i class="fas fa-home"></i>
 								</span>
-								<span class="hidden sm:block">&nbsp;HOME</span>
+								<span class="hidden lg:block">&nbsp;HOME</span>
 							</a>
 						</li>
+						
+						<li>
+							<a href="../article/write" class="h-full flex items-center px-6 hover:underline hover:text-red-500">
+								<span>
+									<i class="fas fa-pen"></i>
+								</span>
+								<span class="hidden lg:block">&nbsp;WRITE</span>
+							</a>
+						</li>
+						
 						<li>
 							<a href="../article/list?boardId=1" class="h-full flex items-center px-6 hover:underline hover:text-red-500">
 								<span>
 									<i class="fas fa-flag"></i>
 								</span>
-								<span class="hidden sm:block">&nbsp;NOTICE LIST</span>
+								<span class="hidden md:block">&nbsp;NOTICE</span>
 							</a>
 						</li>
 						<li>
@@ -185,7 +215,7 @@ const rqParams = ${rq.paramMapJsonStr};
 								<span>
 									<i class="fab fa-free-code-camp"></i>
 								</span>
-								<span class="hidden sm:block">&nbsp;FREE LIST</span>
+								<span class="hidden md:block">&nbsp;FREE</span>
 							</a>
 						</li>
 						<c:if test="${rq.notLogined}">
@@ -195,7 +225,7 @@ const rqParams = ${rq.paramMapJsonStr};
 									<span>
 										<i class="fas fa-sign-in-alt"></i>
 									</span>
-									<span class="hidden sm:block">&nbsp;LOGIN</span>
+									<span class="hidden lg:block">&nbsp;LOGIN</span>
 								</a>
 							</li>
 							<li>
@@ -203,7 +233,7 @@ const rqParams = ${rq.paramMapJsonStr};
 									<span>
 										<i class="fas fa-user-plus"></i>
 									</span>
-									<span class="hidden sm:block">&nbsp;JOIN</span>
+									<span class="hidden lg:block">&nbsp;JOIN</span>
 								</a>
 							</li>
 						</c:if>
@@ -213,7 +243,7 @@ const rqParams = ${rq.paramMapJsonStr};
 									<span>
 										<i class="fas fa-sign-out-alt"></i>
 									</span>
-									<span class="hidden sm:block">&nbsp;LOGOUT</span>
+									<span class="hidden lg:block">&nbsp;LOGOUT</span>
 								</a>
 							</li>
 							<li>
@@ -221,10 +251,21 @@ const rqParams = ${rq.paramMapJsonStr};
 									<span>
 										<i class="fas fa-user"></i>
 									</span>
-									<span class="hidden sm:block">&nbsp;MY PAGE</span>
+									<span class="hidden lg:block">&nbsp;MY PAGE</span>
 								</a>
 							</li>
 						</c:if>
+						<li>
+							<a class="h-full flex items-center px-6">
+								<span>
+									<input type="text" class="input input-sm input-bordered w-24 lg:w-32" placeholder="Search.." />
+								</span>
+								<span>&nbsp;</span>
+								<span>
+									<i class="fas fa-search"></i>
+								</span>
+							</a>
+						</li>
 					</ul>
 				</nav>
 			</div>
