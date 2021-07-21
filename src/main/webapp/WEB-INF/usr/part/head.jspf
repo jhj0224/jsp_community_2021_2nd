@@ -47,6 +47,18 @@ const rqParams = ${rq.paramMapJsonStr};
 				</a>
 
 				<div class="flex-grow"></div>
+				
+				<a href="../article/write" class="flex items-center px-4 hover:text-red-500">
+					<span>
+						<i class="fas fa-pen"></i>
+					</span>
+				</a>
+
+				<a class="btn-show-search-bar flex items-center px-4 hover:text-red-500">
+					<span>
+						<i class="fas fa-search"></i>
+					</span>
+				</a>
 
 				<a class="btn-show-mobile-side-bar flex items-center px-4 hover:text-red-500">
 					<span>
