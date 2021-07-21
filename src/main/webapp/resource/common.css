@@ -70,12 +70,6 @@
   margin-top:10px;	
 }
 
-@media (max-width: 360px) {
-  .logo-text-mini {
-    display:block; 
-  }
-
-  .logo-text-full {
-    display:none; 
-  }
+body {
+  color:#666;
 }

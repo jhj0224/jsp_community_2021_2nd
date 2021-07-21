@@ -35,25 +35,44 @@ const rqParams = ${rq.paramMapJsonStr};
 
 <body>
 	<div class="site-wrap min-h-screen flex flex-col">
-		<div class="h-10 flex-shrink-0 mb-4"></div>
-		<header class="top-bar fixed z-50 inset-0 h-10 font-bold bg-white border-b">
-			<div class="h-full container mx-auto flex">
-				<a href="../../" class="top-bar__logo flex items-center px-4 hover:underline hover:text-red-500">
+		<div class="h-12 flex-shrink-0 mb-4"></div>
+		<header class="mobile-top-bar fixed z-50 inset-0 h-10 font-bold bg-white shadow md:hidden">
+			<div class="h-full flex">
+				<a href="../../" class="logo flex items-center px-4 hover:underline hover:text-red-500">
 					<span>
 						<i class="far fa-lemon"></i>
 					</span>
 					<span class="flex">
-						<span class="logo-text-mini hidden">&nbsp;LM</span>
-						<span class="logo-text-full">&nbsp;Lemon</span>
+						&nbsp;Lemon
+					</span>
+				</a>
+				
+				<div class="flex-grow"></div>
+				
+				<a class="btn-show-mobile-side-bar flex items-center px-4 hover:text-red-500">
+					<span>
+						<i class="fas fa-bars"></i>
+					</span>
+				</a>
+			</div>
+		</header>
+		<header class="top-bar fixed z-50 inset-0 h-12 font-bold bg-white shadow hidden md:block">
+			<div class="h-full container mx-auto flex">
+				<a href="../../" class="logo flex items-center px-4 hover:underline hover:text-red-500">
+					<span>
+						<i class="far fa-lemon"></i>
+					</span>
+					<span class="flex">
+						&nbsp;Lemon
 					</span>
 				</a>
 
 				<div class="flex-grow"></div>
 
 				<nav class="top-bar__menu-box-1">
-					<ul class="flex h-full">
+					<ul class="flex h-full -mr-2">
 						<li>
-							<a href="../../" class="h-full flex items-center px-4 hover:underline hover:text-red-500">
+							<a href="../../" class="h-full flex items-center px-6 hover:underline hover:text-red-500">
 								<span>
 									<i class="fas fa-home"></i>
 								</span>
@@ -61,7 +80,7 @@ const rqParams = ${rq.paramMapJsonStr};
 							</a>
 						</li>
 						<li>
-							<a href="../article/list?boardId=1" class="h-full flex items-center px-4 hover:underline hover:text-red-500">
+							<a href="../article/list?boardId=1" class="h-full flex items-center px-6 hover:underline hover:text-red-500">
 								<span>
 									<i class="fas fa-flag"></i>
 								</span>
@@ -69,7 +88,7 @@ const rqParams = ${rq.paramMapJsonStr};
 							</a>
 						</li>
 						<li>
-							<a href="../article/list?boardId=2" class="h-full flex items-center px-4 hover:underline hover:text-red-500">
+							<a href="../article/list?boardId=2" class="h-full flex items-center px-6 hover:underline hover:text-red-500">
 								<span>
 									<i class="fab fa-free-code-camp"></i>
 								</span>
@@ -79,7 +98,7 @@ const rqParams = ${rq.paramMapJsonStr};
 						<c:if test="${rq.notLogined}">
 							<li>
 								<a href="../member/login?afterLoginUri=${rq.encodedAfterLoginUri}"
-									class="h-full flex items-center px-4 hover:underline hover:text-red-500">
+									class="h-full flex items-center px-6 hover:underline hover:text-red-500">
 									<span>
 										<i class="fas fa-sign-in-alt"></i>
 									</span>
@@ -87,7 +106,7 @@ const rqParams = ${rq.paramMapJsonStr};
 								</a>
 							</li>
 							<li>
-								<a href="../member/join" class="h-full flex items-center px-4 hover:underline hover:text-red-500">
+								<a href="../member/join" class="h-full flex items-center px-6 hover:underline hover:text-red-500">
 									<span>
 										<i class="fas fa-user-plus"></i>
 									</span>
@@ -97,16 +116,15 @@ const rqParams = ${rq.paramMapJsonStr};
 						</c:if>
 						<c:if test="${rq.logined}">
 							<li>
-								<a href="../member/doLogout" class="h-full flex items-center px-4 hover:underline hover:text-red-500">
+								<a href="../member/doLogout" class="h-full flex items-center px-6 hover:underline hover:text-red-500">
 									<span>
 										<i class="fas fa-sign-out-alt"></i>
 									</span>
-									&nbsp;
 									<span class="hidden sm:block">&nbsp;LOGOUT</span>
 								</a>
 							</li>
 							<li>
-								<a href="#" class="h-full flex items-center px-4 hover:underline hover:text-red-500">
+								<a href="#" class="h-full flex items-center px-6 hover:underline hover:text-red-500">
 									<span>
 										<i class="fas fa-user"></i>
 									</span>
