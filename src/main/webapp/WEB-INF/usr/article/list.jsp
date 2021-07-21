@@ -153,7 +153,7 @@
 					<hr />
 				</c:forEach>
 
-				<div class="page-menu">
+				<div class="page-menu hidden md:flex">
 					<c:set var="baseUri" value="?boardId=${boardId}" />
 					<c:set var="baseUri" value="${baseUri}&searchKeywordTypeCode=${param.searchKeywordTypeCode}" />
 					<c:set var="baseUri" value="${baseUri}&searchKeyword=${param.searchKeyword}" />
@@ -183,6 +183,38 @@
 						</c:if>
 					</div>
 				</div>
+				
+				<div class="page-menu flex md:hidden">
+					<c:set var="baseUri" value="?boardId=${boardId}" />
+					<c:set var="baseUri" value="${baseUri}&searchKeywordTypeCode=${param.searchKeywordTypeCode}" />
+					<c:set var="baseUri" value="${baseUri}&searchKeyword=${param.searchKeyword}" />
+
+					<c:set var="pageMenuArmSize" value="2" />
+					<c:set var="startPage" value="${page - pageMenuArmSize >= 1 ? page - pageMenuArmSize : 1}" />
+					<c:set var="endPage" value="${page + pageMenuArmSize <= totalPage ? page + pageMenuArmSize : totalPage}" />
+
+					<div class="btn-group">
+						<c:if test="${startPage > 1}">
+							<a class="btn btn-xs" href="${baseUri}&page=1">1</a>
+							<c:if test="${startPage > 2}">
+								<button class="btn btn-disabled btn-xs">...</button>
+							</c:if>
+						</c:if>
+
+						<c:forEach var="i" begin="${startPage}" end="${endPage}" step="1">
+							<c:set var="aClassStr" value="${i == page ? 'btn-active' : ''}" />
+							<a class="${aClassStr} btn btn-xs" href="${baseUri}&page=${i}">${i}</a>
+						</c:forEach>
+
+						<c:if test="${endPage < totalPage}">
+							<c:if test="${endPage < totalPage - 1}">
+								<button class="btn btn-disabled btn-xs">...</button>
+							</c:if>
+							<a class="btn btn-xs" href="${baseUri}&page=${totalPage}">${totalPage}</a>
+						</c:if>
+					</div>
+				</div>
+				
 			</div>
 		</div>
 	</div>

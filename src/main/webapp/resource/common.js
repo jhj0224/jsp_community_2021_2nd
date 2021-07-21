@@ -24,4 +24,4 @@ function MobileSideBar__hide() {
 
 MobileTopBar__init();
 
-MobileSideBar__init(); 
+MobileSideBar__init();
