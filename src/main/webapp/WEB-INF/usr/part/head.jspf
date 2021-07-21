@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>${pageTitle}|JSPBOARD</title>
+<title>${pageTitle}${' | '}JSPBOARD</title>
 
 <!-- 모바일에서 디자인이 축소되지 않게 하기 위한 코드 -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,6 +35,52 @@ const rqParams = ${rq.paramMapJsonStr};
 <%="</script>"%>
 
 <body>
+	<div class="search-bar">
+		<form action="../article/list">
+			<div>
+				<div class="badge">게시물 검색</div>
+			</div>
+			<div class="form-control">
+				<label class="label">
+					<span class="label-text">게시판</span>
+				</label>
+				<div>
+					<select name="boardId" class="select select-bordered w-full">
+						<option value="0">선택없음</option>
+						<option value="1">공지사항</option>
+						<option value="2">자유게시판</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="form-control">
+				<label class="label">
+					<span class="label-text">검색타입</span>
+				</label>
+				<div>
+					<select name="searchKeywordTypeCode" class="select select-bordered w-full">
+						<option value="title,body">제목,내용</option>
+						<option value="title">제목</option>
+						<option value="body">내용</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="form-control">
+				<label class="label">
+					<span class="label-text">검색어</span>
+				</label>
+				<div>
+					<input autocomplete="off" class="input input-bordered w-full" maxlength="100" name="searchKeyword" type="text" placeholder="검색어를 입력해주세요." />
+				</div>
+			</div>
+
+			<div class="btns">
+				<button type="submit" class="btn btn-link">검색</button>
+				<button type="button" class="btn btn-link btn-hide-search-bar">검색취소</button>
+			</div>
+		</form>
+	</div>
 	<div class="site-wrap min-h-screen flex flex-col">
 		<div class="h-12 flex-shrink-0 mb-2"></div>
 		<header class="mobile-top-bar fixed z-40 inset-0 h-10 font-bold bg-white shadow md:hidden">
@@ -47,13 +93,13 @@ const rqParams = ${rq.paramMapJsonStr};
 				</a>
 
 				<div class="flex-grow"></div>
-				
+
 				<a href="../article/write" class="flex items-center px-4 hover:text-red-500">
 					<span>
 						<i class="fas fa-pen"></i>
 					</span>
 				</a>
-				
+
 				<a class="btn-show-search-bar flex items-center px-4 hover:text-red-500">
 					<span>
 						<i class="fas fa-search"></i>
@@ -94,7 +140,7 @@ const rqParams = ${rq.paramMapJsonStr};
 								<span>&nbsp;HOME</span>
 							</a>
 						</li>
-						
+
 						<li>
 							<a href="../article/write" class="flex py-2 hover:underline hover:text-red-500">
 								<span>
@@ -103,7 +149,7 @@ const rqParams = ${rq.paramMapJsonStr};
 								<span>&nbsp;WRITE</span>
 							</a>
 						</li>
-						
+
 						<li>
 							<a class="btn-show-search-bar flex py-2 hover:underline hover:text-red-500">
 								<span>
@@ -112,7 +158,7 @@ const rqParams = ${rq.paramMapJsonStr};
 								<span>&nbsp;SEARCH</span>
 							</a>
 						</li>
-						
+
 						<li>
 							<a href="../article/list?boardId=1" class="flex py-2 hover:underline hover:text-red-500">
 								<span>
@@ -121,7 +167,7 @@ const rqParams = ${rq.paramMapJsonStr};
 								<span>&nbsp;NOTICE LIST</span>
 							</a>
 						</li>
-						
+
 						<li>
 							<a href="../article/list?boardId=2" class="flex py-2 hover:underline hover:text-red-500">
 								<span>
@@ -192,7 +238,7 @@ const rqParams = ${rq.paramMapJsonStr};
 								<span class="hidden lg:block">&nbsp;HOME</span>
 							</a>
 						</li>
-						
+
 						<li>
 							<a href="../article/write" class="h-full flex items-center px-6 hover:underline hover:text-red-500">
 								<span>
@@ -201,7 +247,7 @@ const rqParams = ${rq.paramMapJsonStr};
 								<span class="hidden lg:block">&nbsp;WRITE</span>
 							</a>
 						</li>
-						
+
 						<li>
 							<a href="../article/list?boardId=1" class="h-full flex items-center px-6 hover:underline hover:text-red-500">
 								<span>
@@ -256,9 +302,9 @@ const rqParams = ${rq.paramMapJsonStr};
 							</li>
 						</c:if>
 						<li>
-							<a class="h-full flex items-center px-6">
+							<a class="h-full flex items-center px-6 btn-show-search-bar">
 								<span>
-									<input type="text" class="input input-sm input-bordered w-24 lg:w-32" placeholder="Search.." />
+									<input readonly="readonly" type="text" class="input input-sm input-bordered w-24 lg:w-32" placeholder="Search.." />
 								</span>
 								<span>&nbsp;</span>
 								<span>
