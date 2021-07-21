@@ -50,6 +50,12 @@ const rqParams = ${rq.paramMapJsonStr};
 						<option value="1">공지사항</option>
 						<option value="2">자유게시판</option>
 					</select>
+					
+					<script>
+					if ( rqParams.boardId ) {
+						$('.search-bar form select[name="boardId"]').val(rqParams.boardId);						
+					}
+					</script>
 				</div>
 			</div>
 
@@ -142,24 +148,6 @@ const rqParams = ${rq.paramMapJsonStr};
 						</li>
 
 						<li>
-							<a href="../article/write" class="flex py-2 hover:underline hover:text-red-500">
-								<span>
-									<i class="fas fa-pen"></i>
-								</span>
-								<span>&nbsp;WRITE</span>
-							</a>
-						</li>
-
-						<li>
-							<a class="btn-show-search-bar flex py-2 hover:underline hover:text-red-500">
-								<span>
-									<i class="fas fa-search"></i>
-								</span>
-								<span>&nbsp;SEARCH</span>
-							</a>
-						</li>
-
-						<li>
 							<a href="../article/list?boardId=1" class="flex py-2 hover:underline hover:text-red-500">
 								<span>
 									<i class="fas fa-flag"></i>
@@ -212,6 +200,24 @@ const rqParams = ${rq.paramMapJsonStr};
 								</a>
 							</li>
 						</c:if>
+						
+						<li>
+							<a href="../article/write" class="flex py-2 hover:underline hover:text-red-500">
+								<span>
+									<i class="fas fa-pen"></i>
+								</span>
+								<span>&nbsp;WRITE</span>
+							</a>
+						</li>
+
+						<li>
+							<a class="btn-show-search-bar flex py-2 hover:underline hover:text-red-500">
+								<span>
+									<i class="fas fa-search"></i>
+								</span>
+								<span>&nbsp;SEARCH</span>
+							</a>
+						</li>
 					</ul>
 				</nav>
 			</section>
@@ -236,15 +242,6 @@ const rqParams = ${rq.paramMapJsonStr};
 									<i class="fas fa-home"></i>
 								</span>
 								<span class="hidden lg:block">&nbsp;HOME</span>
-							</a>
-						</li>
-
-						<li>
-							<a href="../article/write" class="h-full flex items-center px-6 hover:underline hover:text-red-500">
-								<span>
-									<i class="fas fa-pen"></i>
-								</span>
-								<span class="hidden lg:block">&nbsp;WRITE</span>
 							</a>
 						</li>
 
@@ -301,6 +298,14 @@ const rqParams = ${rq.paramMapJsonStr};
 								</a>
 							</li>
 						</c:if>
+						<li>
+							<a href="../article/write" class="h-full flex items-center px-6 hover:underline hover:text-red-500">
+								<span>
+									<i class="fas fa-pen"></i>
+								</span>
+								<span class="hidden lg:block">&nbsp;WRITE</span>
+							</a>
+						</li>
 						<li>
 							<a class="h-full flex items-center px-6 btn-show-search-bar">
 								<span>

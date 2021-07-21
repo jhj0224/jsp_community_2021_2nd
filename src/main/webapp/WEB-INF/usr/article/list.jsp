@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="com.jhs.exam.exam2.http.Rq" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <c:set var="pageTitle" value="게시물 리스트" />
@@ -19,20 +18,20 @@
 			<div class="px-4 py-4">
 				<c:if test="${param.searchKeyword != null && param.searchKeyword != ''}">
 					<div class="badge badge-primary">
-					검색어 타입
+						검색어 타입
 					</div>
 					<span>${param.searchKeywordTypeCode}</span>
 					
 					<br />
-					
+				
 					<div class="badge badge-primary">
 						검색어
 					</div>
 					<span>${param.searchKeyword}</span>
-
+					
 					<br />
 				</c:if>
-					
+			
 				<div class="badge badge-primary">
 					전체게시물 개수
 				</div>
@@ -41,47 +40,8 @@
 
 			<hr />
 			
-			<hr />
-
 			<div class="btns px-4 py-4">
 				<a class="btn btn-link" href="../article/write?boardId=${boardId}">글쓰기</a>
-			</div>
-
-			<div class="px-4 py-4">
-				<div class="badge badge-primary">검색</div>
-				<form action="">
-					<input type="hidden" name="boardId" value="${boardId}" />
-					<div class="form-control">
-						<label class="label">
-							<span class="label-text">검색타입</span>
-						</label>
-						<div>
-							<select name="searchKeywordTypeCode" class="select select-bordered w-full max-w-md">
-								<option value="title,body">제목,내용</option>
-								<option value="title">제목</option>
-								<option value="body">내용</option>
-							</select>
-							
-							<script>
-							$('.section-article-write select[name="searchKeywordTypeCode"]').val(rqBaseTypeAttrs.searchKeywordTypeCode);
-							</script>
-							
-						</div>
-					</div>
-
-					<div class="form-control">
-						<label class="label">
-							<span class="label-text">검색어</span>
-						</label>
-						<div>
-							<input class="input input-bordered w-full max-w-md" maxlength="100" name="searchKeyword" type="text" placeholder="검색어를 입력해주세요." value="${param.searchKeyword}" />
-						</div>
-					</div>
-
-					<div class="btns">
-						<button type="submit" class="btn btn-link">검색</button>
-					</div>
-				</form>
 			</div>
 
 			<hr />
@@ -214,7 +174,6 @@
 						</c:if>
 					</div>
 				</div>
-				
 			</div>
 		</div>
 	</div>
