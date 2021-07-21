@@ -5,17 +5,17 @@
 <c:set var="pageTitle" value="홈" />
 <%@ include file="../part/head.jspf"%>
 
-<section class="section section-home-main px-4">
-	<div class="container mx-auto">
+<section class="section section-home-main">
+	<div class="container mx-auto card-wrap">
 
 		<div class="card bordered shadow-lg">
 			<div class="card-title">
-				<a href="javascript:history.back();" class="cursor-pointer"> <i
-					class="fas fa-chevron-left"></i>
+				<a>
+					<i class="fas fa-home"></i>
 				</a> <span>홈</span>
 			</div>
 			
-			<div>
+			<div class="px-4 py-4">
 				<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ipsam ratione nesciunt laboriosam unde iure fuga laudantium dolor ut quasi! Mollitia hic cum sequi omnis odio ducimus maiores est nulla?</div>
 				<div>Officia voluptates nihil assumenda delectus laborum numquam asperiores quos ipsam iste libero eum ut quam molestias accusamus dignissimos explicabo maxime iure earum at accusantium sapiente. Delectus ducimus dolorem voluptate recusandae.</div>
 				<div>Quam ut vero cumque facere temporibus voluptate qui est fugiat exercitationem atque illo esse aliquid minima itaque vitae tempora aperiam ipsam eligendi repellat soluta ex voluptates dolor distinctio voluptatem odio.</div>

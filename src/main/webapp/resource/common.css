@@ -62,11 +62,11 @@ body {
 }
 
 @media (max-width: 480px) {
-  .card-wrap.max-w-md {
+  .card-wrap {
     max-width:none;
   }
 
-  .card-wrap.max-w-md > .card {
+  .card-wrap > .card {
     overflow: visible;
     border-radius:0;
   }
