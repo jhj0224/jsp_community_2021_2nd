@@ -64,7 +64,7 @@ public class ArticleRepository {
 		SecSql sql = new SecSql();
 		sql.append("SELECT A.*");
 		sql.append("FROM article AS A");
-		sql.append("WHERE id = ?", id);
+		sql.append("WHERE A.id = ?", id);
 		
 		return MysqlUtil.selectRow(sql, Article.class);
 	}

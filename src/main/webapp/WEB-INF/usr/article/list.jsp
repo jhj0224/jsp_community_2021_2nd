@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<c:set var="pageTitle" value="게시물 리스트" />
+<c:set var="pageTitle" value="${board.name} 게시물 리스트" />
 <%@ include file="../part/head.jspf"%>
 
 <section class="section section-article-write px-4">
@@ -12,7 +12,7 @@
 				<a href="javascript:history.back();" class="cursor-pointer">
 					<i class="fas fa-chevron-left"></i>
 				</a>
-				<span>게시물 리스트</span>
+				<span>${board.name} 게시물 리스트</span>
 			</div>
 
 			<div class="px-4 py-4">

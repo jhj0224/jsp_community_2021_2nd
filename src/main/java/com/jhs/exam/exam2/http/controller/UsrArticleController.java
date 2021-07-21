@@ -4,13 +4,16 @@ import java.util.List;
 
 import com.jhs.exam.exam2.container.Container;
 import com.jhs.exam.exam2.dto.Article;
+import com.jhs.exam.exam2.dto.Board;
 import com.jhs.exam.exam2.dto.ResultData;
 import com.jhs.exam.exam2.http.Rq;
 import com.jhs.exam.exam2.service.ArticleService;
+import com.jhs.exam.exam2.service.BoardService;
 import com.jhs.exam.exam2.util.Ut;
 
 public class UsrArticleController extends Controller {
 	private ArticleService articleService = Container.articleService;
+	private BoardService boardService = Container.boardService;
 
 	@Override
 	public void performAction(Rq rq) {
@@ -45,26 +48,26 @@ public class UsrArticleController extends Controller {
 	private void actionDoDelete(Rq rq) {
 		int id = rq.getIntParam("id", 0);
 		String redirectUri = rq.getParam("redirectUri", "../article/list");
-				
+
 		if (id == 0) {
 			rq.historyBack("id를 입력해주세요.");
 			return;
 		}
 
 		Article article = articleService.getForPrintArticleById(rq.getLoginedMember(), id);
-		
-		if ( article == null ) {
+
+		if (article == null) {
 			rq.historyBack(Ut.f("%d번 게시물이 존재하지 않습니다.", id));
 			return;
 		}
-		
+
 		ResultData actorCanDeleteRd = articleService.actorCanDelete(rq.getLoginedMember(), article);
 
 		if (actorCanDeleteRd.isFail()) {
 			rq.historyBack(actorCanDeleteRd.getMsg());
 			return;
 		}
-		
+
 		articleService.delete(id);
 
 		rq.replace(Ut.f("%d번 게시물을 삭제하였습니다.", id), redirectUri);
@@ -79,8 +82,8 @@ public class UsrArticleController extends Controller {
 		}
 
 		Article article = articleService.getForPrintArticleById(rq.getLoginedMember(), id);
-		
-		if ( article == null ) {
+
+		if (article == null) {
 			rq.historyBack(Ut.f("%d번 게시물이 존재하지 않습니다.", id));
 			return;
 		}
@@ -99,20 +102,24 @@ public class UsrArticleController extends Controller {
 		
 		int totalItemsCount = articleService.getArticlesCount(boardId, searchKeywordTypeCode, searchKeyword);
 		List<Article> articles = articleService.getForPrintArticles(rq.getLoginedMember(), boardId, searchKeywordTypeCode, searchKeyword, itemsCountInAPage, page);
-
+		
 		int totalPage = (int)Math.ceil((double)totalItemsCount / itemsCountInAPage);
-
+		
+		Board board = boardService.getBoardById(boardId);
+		
+		rq.setAttr("board", board);
+		
 		rq.setAttr("searchKeywordTypeCode", searchKeywordTypeCode);
 		rq.setAttr("page", page);
 		rq.setAttr("boardId", boardId);
-		rq.setAttr("totalPage", totalPage);		
+		rq.setAttr("totalPage", totalPage);
 		rq.setAttr("totalItemsCount", totalItemsCount);
 		rq.setAttr("articles", articles);
 		rq.jsp("usr/article/list");
 	}
 
 	private void actionDoWrite(Rq rq) {
-		int boardId = 1; // 임시구현
+		int boardId = 1; // 임시구현 //rq.getIntParam("boardId", 0);
 		int memberId = rq.getLoginedMemberId();
 		String title = rq.getParam("title", "");
 		String body = rq.getParam("body", "");
@@ -129,6 +136,7 @@ public class UsrArticleController extends Controller {
 		}
 
 		ResultData writeRd = articleService.write(boardId, memberId, title, body);
+		
 		int id = (int) writeRd.getBody().get("id");
 
 		redirectUri = redirectUri.replace("[NEW_ID]", id + "");
@@ -139,14 +147,13 @@ public class UsrArticleController extends Controller {
 	private void actionShowWrite(Rq rq) {
 		rq.jsp("usr/article/write");
 	}
-	
-	private void actionDoModify(Rq rq) {		
-		
+
+	private void actionDoModify(Rq rq) {
 		int id = rq.getIntParam("id", 0);
 		String title = rq.getParam("title", "");
 		String body = rq.getParam("body", "");
 		String redirectUri = rq.getParam("redirectUri", Ut.f("../article/detail?id=%d", id));
-		
+
 		if (id == 0) {
 			rq.historyBack("id를 입력해주세요.");
 			return;
@@ -161,7 +168,7 @@ public class UsrArticleController extends Controller {
 			rq.historyBack("body를 입력해주세요.");
 			return;
 		}
-		
+
 		Article article = articleService.getForPrintArticleById(rq.getLoginedMember(), id);
 
 		if (article == null) {
@@ -175,7 +182,7 @@ public class UsrArticleController extends Controller {
 			rq.historyBack(actorCanModifyRd.getMsg());
 			return;
 		}
-		
+
 		ResultData modifyRd = articleService.modify(id, title, body);
 
 		rq.replace(modifyRd.getMsg(), redirectUri);
@@ -190,15 +197,15 @@ public class UsrArticleController extends Controller {
 		}
 
 		Article article = articleService.getForPrintArticleById(rq.getLoginedMember(), id);
-		
+
 		ResultData actorCanModifyRd = articleService.actorCanModify(rq.getLoginedMember(), article);
 
 		if (actorCanModifyRd.isFail()) {
 			rq.historyBack(actorCanModifyRd.getMsg());
 			return;
 		}
-		
-		if ( article == null ) {
+
+		if (article == null) {
 			rq.historyBack(Ut.f("%d번 게시물이 존재하지 않습니다.", id));
 			return;
 		}

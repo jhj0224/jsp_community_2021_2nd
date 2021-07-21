@@ -5,6 +5,10 @@ function MobileTopBar__init() {
   $('.mobile-top-bar .btn-show-mobile-side-bar').click(function() {
     MobileSideBar__show();
   });
+  
+  $('.mobile-top-bar .btn-show-search-bar').click(function() {
+    SearchBar__show();
+  });
 }
 /* 모바일 탑바 끝 */
 
@@ -13,6 +17,10 @@ function MobileSideBar__init() {
   $('.mobile-side-bar .btn-close-mobile-side-bar').click(function() {
     MobileSideBar__hide();
   })
+  
+  $('.mobile-side-bar .btn-show-search-bar').click(function() {
+    SearchBar__show();
+  });
 }
 
 function MobileSideBar__show() {
@@ -27,7 +35,7 @@ function MobileSideBar__hide() {
 /* 모바일 사이드바 끝 */
 
 /* 탑바 시작 */
-function TopBar__init() {
+function TopBar__init() {  
   $('.top-bar .btn-show-search-bar').click(function() {
     SearchBar__show();
   });
