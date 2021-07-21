@@ -6,7 +6,7 @@
 <%@ include file="../part/head.jspf"%>
 
 <section class="section section-home-main">
-	<div class="container mx-auto card-wrap">
+	<div class="container mx-auto card-wrap px-4">
 
 		<div class="card bordered shadow-lg">
 			<div class="card-title">
