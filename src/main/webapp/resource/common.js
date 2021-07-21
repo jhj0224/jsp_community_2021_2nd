@@ -14,10 +14,12 @@ function MobileSideBar__init() {
 
 function MobileSideBar__show() {
   $('.mobile-side-bar').addClass('active');
+  $('html').addClass('mobile-side-bar-actived');
 }
 
 function MobileSideBar__hide() {
   $('.mobile-side-bar').removeClass('active');
+  $('html').removeClass('mobile-side-bar-actived');
 }
 
 MobileTopBar__init();
