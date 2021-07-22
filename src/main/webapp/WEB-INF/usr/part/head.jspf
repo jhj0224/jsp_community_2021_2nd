@@ -36,11 +36,11 @@ const rqParams = ${rq.paramMapJsonStr};
 
 <body>
 	<div class="search-bar">
-		<form action="../article/list">
-			<div>
+		<form action="../article/list" class="grid grid-cols-2" style="column-gap:10px;">
+			<div class="col-span-2">
 				<div class="badge">게시물 검색</div>
 			</div>
-			<div class="form-control">
+			<div class="form-control col-span-2 sm:col-span-1">
 				<label class="label">
 					<span class="label-text">게시판</span>
 				</label>
@@ -59,7 +59,7 @@ const rqParams = ${rq.paramMapJsonStr};
 				</div>
 			</div>
 
-			<div class="form-control">
+			<div class="form-control col-span-2 sm:col-span-1">
 				<label class="label">
 					<span class="label-text">검색타입</span>
 				</label>
@@ -72,7 +72,7 @@ const rqParams = ${rq.paramMapJsonStr};
 				</div>
 			</div>
 
-			<div class="form-control">
+			<div class="form-control col-span-2">
 				<label class="label">
 					<span class="label-text">검색어</span>
 				</label>
@@ -81,7 +81,7 @@ const rqParams = ${rq.paramMapJsonStr};
 				</div>
 			</div>
 
-			<div class="btns">
+			<div class="btns col-span-2">
 				<button type="submit" class="btn btn-link">검색</button>
 				<button type="button" class="btn btn-link btn-hide-search-bar">검색취소</button>
 			</div>
