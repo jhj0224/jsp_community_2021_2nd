@@ -88,7 +88,7 @@ const rqParams = ${rq.paramMapJsonStr};
 		</form>
 	</div>
 	<div class="site-wrap min-h-screen flex flex-col">
-		<div class="h-12 flex-shrink-0 mb-2"></div>
+		<div class="h-14 md:h-16 flex-shrink-0"></div>
 		<header class="mobile-top-bar fixed z-40 inset-0 h-10 font-bold bg-white shadow md:hidden">
 			<div class="h-full flex">
 				<a href="../../" class="logo flex items-center px-4 hover:underline hover:text-red-500">
