@@ -72,6 +72,10 @@ body {
     padding-left:0;
     padding-right:0;
   }
+  
+  main > section:first-of-type > .card-wrap {
+  	margin-top:-15px;
+  }
 
   .card-wrap > .card {
     overflow: visible;
