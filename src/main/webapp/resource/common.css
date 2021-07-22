@@ -29,6 +29,11 @@
   --card-title_left-btn-cell-width: 50px;
 }
 
+a.s-link {
+  color:#3432a8;
+  text-decoration: underline;
+}
+
 body {
   color:#666;
 }

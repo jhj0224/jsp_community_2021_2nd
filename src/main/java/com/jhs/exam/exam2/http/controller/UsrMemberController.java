@@ -22,6 +22,9 @@ public class UsrMemberController extends Controller {
 		case "doLogout":
 			actionDoLogout(rq);
 			break;
+		case "join":
+			actionShowJoin(rq);
+			break;
 		default:
 			rq.println("존재하지 않는 페이지 입니다.");
 			break;
@@ -30,7 +33,7 @@ public class UsrMemberController extends Controller {
 
 	private void actionDoLogout(Rq rq) {
 		rq.removeSessionAttr("loginedMemberJson");
-		rq.replace(null, "../article/list");
+		rq.replace(null, "../../");
 	}
 
 	private void actionDoLogin(Rq rq) {
@@ -65,5 +68,9 @@ public class UsrMemberController extends Controller {
 
 	private void actionShowLogin(Rq rq) {
 		rq.jsp("usr/member/login");
+	}
+	
+	private void actionShowJoin(Rq rq) {
+		rq.jsp("usr/member/join");
 	}
 }
