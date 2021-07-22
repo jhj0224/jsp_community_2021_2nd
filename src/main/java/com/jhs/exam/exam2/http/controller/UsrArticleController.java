@@ -119,12 +119,18 @@ public class UsrArticleController extends Controller {
 	}
 
 	private void actionDoWrite(Rq rq) {
-		int boardId = 1; // 임시구현 //rq.getIntParam("boardId", 0);
+		int boardId = rq.getIntParam("boardId", 0);
 		int memberId = rq.getLoginedMemberId();
 		String title = rq.getParam("title", "");
 		String body = rq.getParam("body", "");
 		String redirectUri = rq.getParam("redirectUri", "../article/list");
 
+		if (boardId == 0) {
+			rq.historyBack("boardId를 입력해주세요.");
+			return;
+		}
+
+		
 		if (title.length() == 0) {
 			rq.historyBack("title을 입력해주세요.");
 			return;
