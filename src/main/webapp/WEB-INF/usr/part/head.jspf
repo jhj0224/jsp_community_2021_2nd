@@ -3,7 +3,7 @@
 
 <!DOCTYPE html>
 <html>
-<head>
+<head lang="ko">
 <meta charset="UTF-8">
 <title>${pageTitle}${' | '}JSPBOARD</title>
 
@@ -120,108 +120,7 @@ const rqParams = ${rq.paramMapJsonStr};
 			</div>
 		</header>
 
-		<div class="mobile-side-bar fixed z-50 bg-white flex flex-col md:hidden">
-			<header class="flex flex-col items-center flex-shrink-0 shadow">
-				<a href="../../" class="logo flex justify-center w-full pt-4 pb-2 hover:underline hover:text-red-500 text-2xl">
-					<span>
-						<i class="far fa-lemon"></i>
-					</span>
-					<span class="flex"> &nbsp;Lemon </span>
-				</a>
-
-				<a class="flex justify-center w-full text-xl btn-close-mobile-side-bar pt-2 pb-4  hover:text-red-500">
-					<span>
-						<i class="fas fa-times"></i>
-					</span>
-				</a>
-			</header>
-			<section class="body flex-grow flex justify-center items-center overflow-y-auto">
-				<nav class="mobile-side-bar__menu-box-1 text-xl m-auto">
-					<ul>
-						<li>
-							<a href="../../" class="flex py-2 hover:underline hover:text-red-500">
-								<span>
-									<i class="fas fa-home"></i>
-								</span>
-								<span>&nbsp;HOME</span>
-							</a>
-						</li>
-
-						<li>
-							<a href="../article/list?boardId=1" class="flex py-2 hover:underline hover:text-red-500">
-								<span>
-									<i class="fas fa-flag"></i>
-								</span>
-								<span>&nbsp;NOTICE LIST</span>
-							</a>
-						</li>
-
-						<li>
-							<a href="../article/list?boardId=2" class="flex py-2 hover:underline hover:text-red-500">
-								<span>
-									<i class="fab fa-free-code-camp"></i>
-								</span>
-								<span>&nbsp;FREE LIST</span>
-							</a>
-						</li>
-						<c:if test="${rq.notLogined}">
-							<li>
-								<a href="../member/login?afterLoginUri=${rq.encodedAfterLoginUri}" class="flex py-2 hover:underline hover:text-red-500">
-									<span>
-										<i class="fas fa-sign-in-alt"></i>
-									</span>
-									<span>&nbsp;LOGIN</span>
-								</a>
-							</li>
-							<li>
-								<a href="../member/join" class="flex py-2 hover:underline hover:text-red-500">
-									<span>
-										<i class="fas fa-user-plus"></i>
-									</span>
-									<span>&nbsp;JOIN</span>
-								</a>
-							</li>
-						</c:if>
-						<c:if test="${rq.logined}">
-							<li>
-								<a href="../member/doLogout" class="flex py-2 hover:underline hover:text-red-500">
-									<span>
-										<i class="fas fa-sign-out-alt"></i>
-									</span>
-									<span>&nbsp;LOGOUT</span>
-								</a>
-							</li>
-							<li>
-								<a href="#" class="flex py-2 hover:underline hover:text-red-500">
-									<span>
-										<i class="fas fa-user"></i>
-									</span>
-									<span>&nbsp;MY PAGE</span>
-								</a>
-							</li>
-						</c:if>
-						
-						<li>
-							<a href="../article/write" class="flex py-2 hover:underline hover:text-red-500">
-								<span>
-									<i class="fas fa-pen"></i>
-								</span>
-								<span>&nbsp;WRITE</span>
-							</a>
-						</li>
-
-						<li>
-							<a class="btn-show-search-bar flex py-2 hover:underline hover:text-red-500">
-								<span>
-									<i class="fas fa-search"></i>
-								</span>
-								<span>&nbsp;SEARCH</span>
-							</a>
-						</li>
-					</ul>
-				</nav>
-			</section>
-		</div>
+		<%@ include file="mobileSideBar.jspf" %>
 
 		<header class="top-bar fixed z-40 inset-0 h-12 font-bold bg-white shadow hidden md:block">
 			<div class="h-full container mx-auto flex">
