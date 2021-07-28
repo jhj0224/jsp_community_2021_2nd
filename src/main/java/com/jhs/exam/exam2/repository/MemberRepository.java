@@ -15,4 +15,15 @@ public class MemberRepository {
 		return MysqlUtil.selectRow(sql, Member.class);
 	}
 
+	public Member getMemberByNameAndEmail(String name, String email) {
+		SecSql sql = new SecSql();
+		sql.append("SELECT M.*");
+		sql.append("FROM member AS M");
+		sql.append("WHERE M.name = ?", name);
+		sql.append("AND M.email = ?", email);
+		sql.append("LIMIT 1");
+
+		return MysqlUtil.selectRow(sql, Member.class);
+	}
+
 }

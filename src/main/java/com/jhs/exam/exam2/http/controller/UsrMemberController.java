@@ -73,6 +73,13 @@ public class UsrMemberController extends Controller {
 		}
 		
 		rq.debugParams();
+		
+		ResultData joinRd = memberService.join(loginId, loginPw, name, nickname, cellphoneNo, email);
+
+		if (joinRd.isFail()) {
+			rq.historyBack(joinRd.getMsg());
+			return;
+		}
 	}
 
 	private void actionDoLogout(Rq rq) {
