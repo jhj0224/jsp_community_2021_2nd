@@ -272,4 +272,12 @@ public class Rq {
 
 		return getCurrentUri();
 	}
+
+	public void debugParams() {
+		print("<h1>debugParams</h1>");
+		print("<pre>");
+		print(Ut.toPrettyJson(getParamMap(), ""));
+		print("</pre>");
+		
+	}
 }

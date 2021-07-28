@@ -71,6 +71,8 @@ public class UsrMemberController extends Controller {
 			rq.historyBack("email(을)를 입력해주세요.");
 			return;
 		}
+		
+		rq.debugParams();
 	}
 
 	private void actionDoLogout(Rq rq) {
