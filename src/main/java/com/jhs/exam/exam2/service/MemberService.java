@@ -43,7 +43,7 @@ public class MemberService {
 		return ResultData.from("S-1", "가입성공", "id", id);
 	}
 
-	private Member getMemberByNameAndEmail(String name, String email) {
+	public Member getMemberByNameAndEmail(String name, String email) {
 		return memberRepository.getMemberByNameAndEmail(name, email);
 	}
 
