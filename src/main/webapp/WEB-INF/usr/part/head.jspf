@@ -77,7 +77,7 @@ const rqParams = ${rq.paramMapJsonStr};
 					<span class="label-text">검색어</span>
 				</label>
 				<div>
-					<input autocomplete="off" class="input input-bordered w-full" maxlength="100" name="searchKeyword" type="text" placeholder="검색어를 입력해주세요." />
+					<input autocomplete="off" class="input input-primary input-bordered w-full" maxlength="100" name="searchKeyword" type="text" placeholder="검색어를 입력해주세요." />
 				</div>
 			</div>
 
@@ -307,12 +307,11 @@ const rqParams = ${rq.paramMapJsonStr};
 							</a>
 						</li>
 						<li>
-							<a class="h-full flex items-center px-6 btn-show-search-bar">
+							<a class="h-full flex items-center px-6 btn-show-search-bar relative">
 								<span>
-									<input readonly="readonly" type="text" class="input input-sm input-bordered w-24 lg:w-32" placeholder="Search.." />
+									<input readonly="readonly" type="text" class="input input-sm input-bordered w-32 lg:w-36" placeholder="Search.." />
 								</span>
-								<span>&nbsp;</span>
-								<span>
+								<span class="absolute top-0 bottom-0 right-0 flex items-center mr-8 cursor-pointer hover:text-red-500">
 									<i class="fas fa-search"></i>
 								</span>
 							</a>
