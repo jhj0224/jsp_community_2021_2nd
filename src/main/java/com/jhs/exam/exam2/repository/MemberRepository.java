@@ -26,4 +26,21 @@ public class MemberRepository {
 		return MysqlUtil.selectRow(sql, Member.class);
 	}
 
+	public int join(String loginId, String loginPw, String name, String nickname, String cellphoneNo, String email) {
+		SecSql sql = new SecSql();
+		sql.append("INSERT INTO `member`");
+		sql.append("SET regDate = NOW()");
+		sql.append(", updateDate = NOW()");
+		sql.append(", loginId = ?", loginId);
+		sql.append(", loginPw = ?", loginPw);
+		sql.append(", name = ?", name);
+		sql.append(", nickname = ?", nickname);
+		sql.append(", cellphoneNo = ?", cellphoneNo);
+		sql.append(", email = ?", email);
+
+		int id = MysqlUtil.insert(sql);
+
+		return id;
+	}
+
 }

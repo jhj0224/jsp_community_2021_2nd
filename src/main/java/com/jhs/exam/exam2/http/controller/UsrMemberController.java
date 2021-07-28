@@ -80,6 +80,8 @@ public class UsrMemberController extends Controller {
 			rq.historyBack(joinRd.getMsg());
 			return;
 		}
+		
+		rq.replace(joinRd.getMsg(), "../member/login");
 	}
 
 	private void actionDoLogout(Rq rq) {

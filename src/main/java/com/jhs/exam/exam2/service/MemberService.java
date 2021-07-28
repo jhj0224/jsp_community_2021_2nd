@@ -38,9 +38,9 @@ public class MemberService {
 			return ResultData.from("F-2", Ut.f("%s님은 이메일 주소 `%s`(으)로 이미 가입하셨습니다.", name, email));
 		}
 
-		// 가입 구현
+		int id = memberRepository.join(loginId, loginPw, name, nickname, cellphoneNo, email);
 
-		return ResultData.from("S-1", "가입성공"); // 임시
+		return ResultData.from("S-1", "가입성공", "id", id);
 	}
 
 	private Member getMemberByNameAndEmail(String name, String email) {
