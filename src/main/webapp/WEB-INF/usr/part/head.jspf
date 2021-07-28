@@ -3,7 +3,7 @@
 
 <!DOCTYPE html>
 <html>
-<head lang="ko">
+<head lang="ko" data-theme="light">
 <meta charset="UTF-8">
 <title>${pageTitle}${' | '}JSPBOARD</title>
 
