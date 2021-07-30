@@ -6,6 +6,10 @@ public class NeedLoginInterceptor extends Interceptor {
 
 	@Override
 	public boolean runBeforeAction(Rq rq) {
+		if ( rq.getControllerTypeName().equals("usr") == false ) {
+			return true;
+		}
+		
 		switch (rq.getActionPath()) {
 		case "/usr/article/list":
 		case "/usr/article/detail":
