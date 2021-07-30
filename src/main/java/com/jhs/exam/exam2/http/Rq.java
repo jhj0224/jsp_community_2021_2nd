@@ -33,6 +33,10 @@ public class Rq {
 	
 	@Getter
 	@Setter
+	private boolean isAdmin = false;	
+	
+	@Getter
+	@Setter
 	private boolean isLogined = false;
 	
 	@Getter
@@ -279,5 +283,9 @@ public class Rq {
 		print(Ut.toPrettyJson(getParamMap(), ""));
 		print("</pre>");
 		
+	}
+	
+	public boolean isNotAdmin() {
+		return !isAdmin;
 	}
 }

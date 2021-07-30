@@ -50,5 +50,9 @@ public class MemberService {
 	private Member getMemberByLoginId(String loginId) {
 		return memberRepository.getMemberByLoginId(loginId);
 	}
+	
+	public boolean isAdmin(Member member) {
+		return member.getAuthLevel() >= 7;
+	}
 
 }

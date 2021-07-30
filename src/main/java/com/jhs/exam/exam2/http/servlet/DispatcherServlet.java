@@ -3,7 +3,6 @@ package com.jhs.exam.exam2.http.servlet;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -70,6 +69,10 @@ abstract public class DispatcherServlet extends HttpServlet {
 		}
 
 		if (Container.needLogoutInterceptor.runBeforeAction(rq) == false) {
+			return false;
+		}
+		
+		if (Container.needAdminInterceptor.runBeforeAction(rq) == false) {
 			return false;
 		}
 
