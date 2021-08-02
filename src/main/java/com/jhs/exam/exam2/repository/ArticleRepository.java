@@ -7,6 +7,10 @@ import com.jhs.mysqliutil.MysqlUtil;
 import com.jhs.mysqliutil.SecSql;
 
 public class ArticleRepository {
+	public void init() {
+		
+	}
+	
 	public int write(int boardId, int memberId, String title, String body) {
 		SecSql sql = new SecSql();
 		sql.append("INSERT INTO article");

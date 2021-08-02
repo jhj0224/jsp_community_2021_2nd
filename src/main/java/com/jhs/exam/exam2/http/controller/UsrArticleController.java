@@ -12,8 +12,14 @@ import com.jhs.exam.exam2.service.BoardService;
 import com.jhs.exam.exam2.util.Ut;
 
 public class UsrArticleController extends Controller {
-	private ArticleService articleService = Container.articleService;
-	private BoardService boardService = Container.boardService;
+	private ArticleService articleService;
+	private BoardService boardService;	
+	
+	public void init() {
+		articleService = Container.articleService;
+		boardService = Container.boardService;
+	}
+	
 
 	@Override
 	public void performAction(Rq rq) {

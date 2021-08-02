@@ -10,7 +10,11 @@ import com.jhs.exam.exam2.repository.ArticleRepository;
 import com.jhs.exam.exam2.util.Ut;
 
 public class ArticleService {
-	private ArticleRepository articleRepository = Container.articleRepository;
+	private ArticleRepository articleRepository;
+	
+	public void init() {
+		articleRepository = Container.articleRepository;
+	}
 
 	public ResultData write(int boardId, int memberId, String title, String body) {
 		int id = articleRepository.write(boardId, memberId, title, body);

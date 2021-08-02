@@ -8,8 +8,12 @@ import com.jhs.exam.exam2.service.MemberService;
 import com.jhs.exam.exam2.util.Ut;
 
 public class UsrMemberController extends Controller {
-	private MemberService memberService = Container.memberService;
+	private MemberService memberService; 
 
+	public void init() {
+		memberService = Container.memberService;
+	}	
+	
 	@Override
 	public void performAction(Rq rq) {
 		switch (rq.getActionMethodName()) {

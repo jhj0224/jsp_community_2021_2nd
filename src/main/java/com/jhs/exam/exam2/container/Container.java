@@ -35,7 +35,7 @@ public class Container {
 	public static BoardRepository boardRepository;
 	public static BoardService boardService;
 	
-	public static Controller admHomeController;
+	public static AdmHomeController admHomeController;
 
 	public static void init() {
 		memberRepository = new MemberRepository();
@@ -56,5 +56,23 @@ public class Container {
 		usrHomeController = new UsrHomeController();
 		
 		admHomeController = new AdmHomeController();
+		
+		memberRepository.init();
+		boardRepository.init();
+		articleRepository.init();
+
+		memberService.init();
+		boardService.init();
+		articleService.init();
+
+		beforeActionInterceptor.init();
+		needLoginInterceptor.init();
+		needLogoutInterceptor.init();
+		needAdminInterceptor.init();
+
+		usrMemberController.init();
+		usrArticleController.init();
+		usrHomeController.init();
+		admHomeController.init();
 	}
 }

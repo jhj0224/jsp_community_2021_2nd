@@ -5,7 +5,11 @@ import com.jhs.mysqliutil.MysqlUtil;
 import com.jhs.mysqliutil.SecSql;
 
 public class BoardRepository {
-
+	public void init() {
+		
+	}
+	
+	
 	public Board getBoardById(int id) {
 		SecSql sql = new SecSql();
 		sql.append("SELECT B.*");
