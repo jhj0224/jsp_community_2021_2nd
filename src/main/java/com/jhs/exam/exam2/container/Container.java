@@ -1,7 +1,9 @@
 package com.jhs.exam.exam2.container;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.jhs.exam.exam2.http.controller.AdmHomeController;
-import com.jhs.exam.exam2.http.controller.Controller;
 import com.jhs.exam.exam2.http.controller.UsrArticleController;
 import com.jhs.exam.exam2.http.controller.UsrHomeController;
 import com.jhs.exam.exam2.http.controller.UsrMemberController;
@@ -17,6 +19,8 @@ import com.jhs.exam.exam2.service.BoardService;
 import com.jhs.exam.exam2.service.MemberService;
 
 public class Container {
+	private static List<ContainerComponent> containerComponents;
+	
 	public static BeforeActionInterceptor beforeActionInterceptor;
 	public static NeedLoginInterceptor needLoginInterceptor;
 	public static NeedLogoutInterceptor needLogoutInterceptor;
@@ -38,41 +42,35 @@ public class Container {
 	public static AdmHomeController admHomeController;
 
 	public static void init() {
-		memberRepository = new MemberRepository();
-		boardRepository = new BoardRepository();
-		articleRepository = new ArticleRepository();
+		containerComponents = new ArrayList<>();
 		
-		memberService = new MemberService();
-		boardService = new BoardService();
-		articleService = new ArticleService();
-
-		beforeActionInterceptor = new BeforeActionInterceptor();
-		needLoginInterceptor = new NeedLoginInterceptor();
-		needLogoutInterceptor = new NeedLogoutInterceptor();
-		needAdminInterceptor = new NeedAdminInterceptor();
-
-		usrMemberController = new UsrMemberController();
-		usrArticleController = new UsrArticleController();
-		usrHomeController = new UsrHomeController();
+		memberRepository = addContainerComponent(new MemberRepository());
+		boardRepository = addContainerComponent(new BoardRepository());
+		articleRepository = addContainerComponent(new ArticleRepository());
 		
-		admHomeController = new AdmHomeController();
+		memberService = addContainerComponent(new MemberService());
+		boardService = addContainerComponent(new BoardService());
+		articleService = addContainerComponent(new ArticleService());
+
+		beforeActionInterceptor = addContainerComponent(new BeforeActionInterceptor());
+		needLoginInterceptor = addContainerComponent(new NeedLoginInterceptor());
+		needLogoutInterceptor = addContainerComponent(new NeedLogoutInterceptor());
+		needAdminInterceptor = addContainerComponent(new NeedAdminInterceptor());
+
+		usrMemberController = addContainerComponent(new UsrMemberController());
+		usrArticleController = addContainerComponent(new UsrArticleController());
+		usrHomeController = addContainerComponent(new UsrHomeController());
 		
-		memberRepository.init();
-		boardRepository.init();
-		articleRepository.init();
-
-		memberService.init();
-		boardService.init();
-		articleService.init();
-
-		beforeActionInterceptor.init();
-		needLoginInterceptor.init();
-		needLogoutInterceptor.init();
-		needAdminInterceptor.init();
-
-		usrMemberController.init();
-		usrArticleController.init();
-		usrHomeController.init();
-		admHomeController.init();
+		admHomeController = addContainerComponent(new AdmHomeController());
+		
+		for (ContainerComponent containerComponent : containerComponents) {
+			containerComponent.init();
+		}
+		
 	}
+	
+	private static <T> T addContainerComponent(ContainerComponent containerComponent) {
+		containerComponents.add(containerComponent);
+
+		return (T) containerComponent;
 }
