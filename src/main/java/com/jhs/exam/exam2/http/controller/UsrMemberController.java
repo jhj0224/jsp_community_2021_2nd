@@ -38,12 +38,15 @@ public class UsrMemberController extends Controller {
 		case "doFindLoginId":
 			actionDoFindLoginId(rq);
 			break;
+		case "findLoginPw":
+			actionShowFindLoginPw(rq);
+			break;
 		default:
 			rq.println("존재하지 않는 페이지 입니다.");
 			break;
 		}
 	}
-	
+		
 	private void actionShowFindLoginId(Rq rq) {
 		rq.jsp("usr/member/findLoginId");
 	}
@@ -73,6 +76,10 @@ public class UsrMemberController extends Controller {
 		rq.replace(Ut.f("해당 회원의 로그인아이디는 `%s` 입니다.", oldMember.getLoginId()), replaceUri);
 		return;
 		
+	}
+	
+	private void actionShowFindLoginPw(Rq rq) {
+		rq.jsp("usr/member/findLoginPw");
 	}
 	
 	private void actionDoJoin(Rq rq) {
