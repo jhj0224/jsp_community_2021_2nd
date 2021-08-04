@@ -10,7 +10,7 @@ import com.jhs.exam.exam2.app.App;
 public class InitListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-    	App.init();
+    	App.start();
     }
 
     @Override

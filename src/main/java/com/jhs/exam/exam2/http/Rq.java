@@ -11,6 +11,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.jhs.exam.exam2.app.App;
+import com.jhs.exam.exam2.container.Container;
 import com.jhs.exam.exam2.dto.Member;
 import com.jhs.exam.exam2.util.Ut;
 
@@ -46,6 +48,9 @@ public class Rq {
 	@Getter
 	@Setter
 	private Member loginedMember = null;
+	
+	@Getter
+	private App app = Container.app;
 	
 	public boolean isNotLogined() {
 		return isLogined == false;
