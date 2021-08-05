@@ -27,6 +27,10 @@ public class App implements ContainerComponent {
 		return true;
 	}
 	
+	private static boolean isProductMode() {
+		return isDevMode() == false;
+	}
+	
 	// 정적 요소 세팅
 	public static void start() {
 		// DB 세팅
@@ -44,5 +48,51 @@ public class App implements ContainerComponent {
 	
 	public String getSmtpGmailPw() {
 		return smtpGmailPw;
+	}
+
+	public String getSiteName() {
+		return "준이의 코딩천국";
+	}
+
+	public String getBaseUri() {
+		String appUri = getSiteProtocol() + "://" + getSiteDomain();
+
+		if (getSitePort() != 80 && getSitePort() != 443) {
+			appUri += ":" + getSitePort();
+		}
+
+		if (getContextName().length() > 0) {
+			appUri += "/" + getContextName();
+		}
+
+		return appUri;
+	}
+
+	private String getContextName() {
+		if (isProductMode()) {
+			return "";
+		}
+
+		return "jsp_community_2021";
+	}
+	
+	private int getSitePort() {
+		return 8080;
+	}
+
+	private String getSiteDomain() {
+		return "localhost";
+	}
+
+	private String getSiteProtocol() {
+		return "http";
+	}
+
+	public String getLoginUri() {
+		return getBaseUri() + "/usr/member/login";				
+	}
+
+	public String getNotifyEmailFromName() {
+		return "준이의 코딩천국 알림";
 	}
 }

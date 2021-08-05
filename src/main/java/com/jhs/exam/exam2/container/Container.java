@@ -17,6 +17,7 @@ import com.jhs.exam.exam2.repository.BoardRepository;
 import com.jhs.exam.exam2.repository.MemberRepository;
 import com.jhs.exam.exam2.service.ArticleService;
 import com.jhs.exam.exam2.service.BoardService;
+import com.jhs.exam.exam2.service.EmailService;
 import com.jhs.exam.exam2.service.MemberService;
 
 public class Container {
@@ -44,6 +45,8 @@ public class Container {
 	
 	public static AdmHomeController admHomeController;
 
+	public static EmailService emailService;
+
 	public static void init() {
 		containerComponents = new ArrayList<>();
 				
@@ -66,6 +69,8 @@ public class Container {
 		usrHomeController = addContainerComponent(new UsrHomeController());
 		
 		admHomeController = addContainerComponent(new AdmHomeController());
+		
+		emailService = addContainerComponent(new EmailService());
 		
 		for (ContainerComponent containerComponent : containerComponents) {
 			containerComponent.init();

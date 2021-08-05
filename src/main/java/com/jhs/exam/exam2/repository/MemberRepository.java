@@ -48,4 +48,16 @@ public class MemberRepository implements ContainerComponent {
 		return id;
 	}
 
+
+	public void modifyPassword(int id, String loginPw) {
+		SecSql sql = new SecSql();
+		sql.append("UPDATE `member`");
+		sql.append("SET updateDate = NOW()");
+		sql.append(", loginPw = ?", loginPw);
+		sql.append("WHERE id = ?", id);
+
+		MysqlUtil.update(sql);
+		
+	}
+
 }

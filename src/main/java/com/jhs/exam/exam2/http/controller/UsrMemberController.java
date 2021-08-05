@@ -41,12 +41,15 @@ public class UsrMemberController extends Controller {
 		case "findLoginPw":
 			actionShowFindLoginPw(rq);
 			break;
+		case "doFindLoginPw":
+			actionDoFindLoginPw(rq);
+			break;
 		default:
 			rq.println("존재하지 않는 페이지 입니다.");
 			break;
 		}
-	}
-		
+	}	
+	
 	private void actionShowFindLoginId(Rq rq) {
 		rq.jsp("usr/member/findLoginId");
 	}
@@ -81,6 +84,45 @@ public class UsrMemberController extends Controller {
 	private void actionShowFindLoginPw(Rq rq) {
 		rq.jsp("usr/member/findLoginPw");
 	}
+	
+	private void actionDoFindLoginPw(Rq rq) {
+		String loginId = rq.getParam("loginId", "");
+		String email = rq.getParam("email", "");
+
+		if (loginId.length() == 0) {
+			rq.historyBack("loginId(을)를 입력해주세요.");
+			return;
+		}
+
+		if (email.length() == 0) {
+			rq.historyBack("email(을)를 입력해주세요.");
+			return;
+		}
+
+		Member oldMember = memberService.getMemberByLoginId(loginId);
+
+		if (oldMember == null) {
+			rq.historyBack("일치하는 회원이 존재하지 않습니다.");
+			return;
+		}
+
+		if (oldMember.getEmail().equals(email) == false) {
+			rq.historyBack("일치하는 회원이 존재하지 않습니다.");
+			return;
+		}
+
+		ResultData sendTempLoginPwToEmailRd = memberService.sendTempLoginPwToEmail(oldMember);
+
+		if ( sendTempLoginPwToEmailRd.isFail() ) {
+			rq.historyBack(sendTempLoginPwToEmailRd.getMsg());
+			return;
+		}
+
+		rq.replace(sendTempLoginPwToEmailRd.getMsg(), "../home/main");
+		return;
+		
+	}
+	
 	
 	private void actionDoJoin(Rq rq) {
 		String loginId = rq.getParam("loginId", "");
