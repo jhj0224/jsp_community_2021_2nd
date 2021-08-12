@@ -27,6 +27,7 @@ public class App implements ContainerComponent {
 		return true;
 	}
 	
+	// 서버에서 돌아가는 모드
 	private static boolean isProductMode() {
 		return isDevMode() == false;
 	}
@@ -42,18 +43,22 @@ public class App implements ContainerComponent {
 				
 	}
 	
+	// 이메일 아이디
 	public String getSmtpGmailId() {
 		return "jhj8664@gmail.com";
 	}
 	
+	// 이메일 비밀번호
 	public String getSmtpGmailPw() {
 		return smtpGmailPw;
 	}
 
+	// 사이트 이름
 	public String getSiteName() {
 		return "준이의 코딩천국";
 	}
 
+	// 아래 코드를 실행시키기 위한 기본 코드(프로토콜,도메인,포트 등)
 	public String getBaseUri() {
 		String appUri = getSiteProtocol() + "://" + getSiteDomain();
 
@@ -68,6 +73,7 @@ public class App implements ContainerComponent {
 		return appUri;
 	}
 
+	// 현재가 서비스 모드면 "", 그렇지 않으면 앱 이름(jsp_community_2021)
 	private String getContextName() {
 		if (isProductMode()) {
 			return "";
@@ -76,22 +82,27 @@ public class App implements ContainerComponent {
 		return "jsp_community_2021";
 	}
 	
+	// 사이트 포트
 	private int getSitePort() {
 		return 8080;
 	}
 
+	// 도메인
 	private String getSiteDomain() {
 		return "localhost";
 	}
 
+	// 프로토콜
 	private String getSiteProtocol() {
 		return "http";
 	}
 
+	// 로그인 페이지
 	public String getLoginUri() {
 		return getBaseUri() + "/usr/member/login";				
 	}
 
+	// 이메일 알림 이름
 	public String getNotifyEmailFromName() {
 		return "준이의 코딩천국 알림";
 	}
