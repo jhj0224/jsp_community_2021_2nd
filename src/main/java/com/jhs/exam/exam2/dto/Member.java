@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Data;
 
+// Member class 생성
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 public class Member {

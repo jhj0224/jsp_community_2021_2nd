@@ -4,8 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Data;
 
+// Article class 생성 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Data
+@Data 
 public class Article {
 	private int id;
 	private String regDate;
@@ -15,14 +16,17 @@ public class Article {
 	private String title;
 	private String body;
 	
+	// 추가로 만들어진 것 담기, extra는 기존 것과 추가한 것이라는 걸 구분하기 위해 사용함
 	private String extra__writerName;
 	private boolean extra__actorCanModify;
 	private boolean extra__actorCanDelete;
 	
+	// 게시물 리스트 제목 출력
 	public String getTitleForPrint() {
 		return title;
 	}
 	
+	// 게시물 리스트 본문 요약 출력
 	public String getBodySummaryForPrint() {
 		return body;
 	}

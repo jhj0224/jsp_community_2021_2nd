@@ -7,6 +7,7 @@ import com.jhs.exam.exam2.util.Ut;
 import lombok.Getter;
 import lombok.ToString;
 
+// 리턴 받은 값이 true,false 여부를 확인하고 메세지와 필요 데이터를 반환 하기위해 사용하는 클래스
 @ToString
 public class ResultData {
 	@Getter
