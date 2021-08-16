@@ -20,6 +20,7 @@ import com.jhs.exam.exam2.service.BoardService;
 import com.jhs.exam.exam2.service.EmailService;
 import com.jhs.exam.exam2.service.MemberService;
 
+// 객체를 저장하는 곳, 크기를 지정할 필요없이 요소가 추가될 때마다 크기를 동적으로 증가시킴 
 public class Container {
 	private static List<ContainerComponent> containerComponents;
 	
@@ -50,6 +51,7 @@ public class Container {
 	public static void init() {
 		containerComponents = new ArrayList<>();
 				
+		// 의존성 세팅 시작
 		app = addContainerComponent(new App());
 		memberRepository = addContainerComponent(new MemberRepository());
 		boardRepository = addContainerComponent(new BoardRepository());
@@ -72,12 +74,15 @@ public class Container {
 		
 		emailService = addContainerComponent(new EmailService());
 		
+		// 객체 초기화
+		// 초기화
 		for (ContainerComponent containerComponent : containerComponents) {
 			containerComponent.init();
 		}
 		
 	}
-	
+		
+	// 위의 과정을 한번에 넣기 위해 만든 것, 객체 생성 -> 객체 담기 -> return , 인터넷 참조
 	private static <T> T addContainerComponent(ContainerComponent containerComponent) {
 		containerComponents.add(containerComponent);
 
