@@ -12,9 +12,10 @@ import com.jhs.exam.exam2.service.BoardService;
 import com.jhs.exam.exam2.util.Ut;
 
 public class UsrArticleController extends Controller {
+	// articleService와 boardService를 사용하기 위해 Container에 생성된 해당 객체 불러오기
 	private ArticleService articleService;
 	private BoardService boardService;	
-	
+		
 	public void init() {
 		articleService = Container.articleService;
 		boardService = Container.boardService;
