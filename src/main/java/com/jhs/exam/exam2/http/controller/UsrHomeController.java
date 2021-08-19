@@ -21,6 +21,7 @@ public class UsrHomeController extends Controller {
 		case "doSendMail":
 			actionDoSendMail(rq);
 			break;
+		// 일치하지 않을시 오류메세지 출력후 break;
 		default:
 			rq.println("존재하지 않는 페이지 입니다.");
 			break;
