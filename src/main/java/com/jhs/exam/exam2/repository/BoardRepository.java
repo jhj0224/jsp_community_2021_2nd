@@ -10,7 +10,7 @@ public class BoardRepository implements ContainerComponent {
 		
 	}
 	
-	
+	// DB에서 id값으로 해당 board값을 리턴하는 메서드 
 	public Board getBoardById(int id) {
 		SecSql sql = new SecSql();
 		sql.append("SELECT B.*");

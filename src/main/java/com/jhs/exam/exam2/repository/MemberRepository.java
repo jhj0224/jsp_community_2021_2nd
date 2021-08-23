@@ -10,7 +10,7 @@ public class MemberRepository implements ContainerComponent {
 		
 	}
 	
-	
+	// 로그인아이디로 해당 member가 DB에 찾는 함수
 	public Member getMemberByLoginId(String loginId) {
 		SecSql sql = new SecSql();
 		sql.append("SELECT M.*");
@@ -20,6 +20,7 @@ public class MemberRepository implements ContainerComponent {
 		return MysqlUtil.selectRow(sql, Member.class);
 	}
 
+	// 해당 name과 email을 이용해 해당member를 DB에서 찾아 리턴하는 함수
 	public Member getMemberByNameAndEmail(String name, String email) {
 		SecSql sql = new SecSql();
 		sql.append("SELECT M.*");
@@ -31,6 +32,7 @@ public class MemberRepository implements ContainerComponent {
 		return MysqlUtil.selectRow(sql, Member.class);
 	}
 
+	// 입력받은 변수를 이용 새로운 member를 DB에서 생성
 	public int join(String loginId, String loginPw, String name, String nickname, String cellphoneNo, String email) {
 		SecSql sql = new SecSql();
 		sql.append("INSERT INTO `member`");
@@ -49,6 +51,7 @@ public class MemberRepository implements ContainerComponent {
 	}
 
 
+	// 해당 멤버 DB에서 비밀번호 변경하는 함수
 	public void modifyPassword(int id, String loginPw) {
 		SecSql sql = new SecSql();
 		sql.append("UPDATE `member`");

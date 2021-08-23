@@ -12,6 +12,7 @@ public class ArticleRepository implements ContainerComponent {
 		
 	}
 	
+	// 게시물을 해당 변수에 맞게 DB에 저장후 해당 게시물 번호를 리턴
 	public int write(int boardId, int memberId, String title, String body) {
 		SecSql sql = new SecSql();
 		sql.append("INSERT INTO article");
@@ -27,6 +28,7 @@ public class ArticleRepository implements ContainerComponent {
 		return id;
 	}
 
+	// 해당 변수에 맞는 게시물을 DB에서 찾아 리턴하는 함수
 	public List<Article> getForPrintArticles(int boardId, String searchKeywordTypeCode, String searchKeyword, int limitFrom, int limitTake) {
 		SecSql sql = new SecSql();
 		sql.append("SELECT A.*");
@@ -36,6 +38,7 @@ public class ArticleRepository implements ContainerComponent {
 		sql.append("ON A.memberId = M.id");
 		sql.append("WHERE 1");
 		
+		// searchKeyword이 null이거나 없을 경우 동작X
 		if (searchKeyword != null && searchKeyword.length() > 0) {
 			switch (searchKeywordTypeCode) {
 			case "title,body":
@@ -55,6 +58,7 @@ public class ArticleRepository implements ContainerComponent {
 			}
 		}
 		
+		// 게시판 번호가 0일시 동작X
 		if (boardId != 0) {
 			sql.append("AND A.boardId = ?", boardId);
 		}
@@ -65,6 +69,7 @@ public class ArticleRepository implements ContainerComponent {
 		return MysqlUtil.selectRows(sql, Article.class);
 	}
 
+	// id번 게시물을 DB에서 찾아 리턴하는 함수
 	public Article getForPrintArticleById(int id) {
 		SecSql sql = new SecSql();
 		sql.append("SELECT A.*");
@@ -74,6 +79,7 @@ public class ArticleRepository implements ContainerComponent {
 		return MysqlUtil.selectRow(sql, Article.class);
 	}
 
+	// 해당 id의 게시물을 DB에서 삭제
 	public int delete(int id) {
 		SecSql sql = new SecSql();
 		sql.append("DELETE FROM article");
@@ -82,6 +88,7 @@ public class ArticleRepository implements ContainerComponent {
 		return MysqlUtil.delete(sql);
 	}
 
+	// 게시물을 수정하는 메서드
 	public int modify(int id, String title, String body) {
 		SecSql sql = new SecSql();
 		sql.append("UPDATE article");
@@ -100,6 +107,7 @@ public class ArticleRepository implements ContainerComponent {
 		return MysqlUtil.update(sql);
 	}
 
+	// 해당 변수를 이용하여 해당되는 게시물 갯수를 DB에서 받아와 리턴
 	public int getArticlesCount(int boardId, String searchKeywordTypeCode, String searchKeyword) {
 		SecSql sql = new SecSql();
 		sql.append("SELECT COUNT(*) AS cnt");
@@ -126,6 +134,7 @@ public class ArticleRepository implements ContainerComponent {
 			}
 		}
 		
+		// 게시판 번호가 0일시 동작X
 		if (boardId != 0) {
 			sql.append("AND A.boardId = ?", boardId);
 		}
