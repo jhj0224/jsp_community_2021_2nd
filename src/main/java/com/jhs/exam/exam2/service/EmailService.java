@@ -11,6 +11,7 @@ public class EmailService implements ContainerComponent {
 
 	}
 
+	// 메일 발송하는 메서드
 	public int notify(String to, String title, String body) {
 		App app = Container.app;
 		String smtpGmailId = app.getSmtpGmailId();
