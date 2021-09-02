@@ -28,14 +28,17 @@ public class MysqlUtil {
 		connections = new HashMap<>();
 	}
 
+	// 변수값이 boolean값이 들어올시 인스턴트 변수 isDevMode를 변환시켜주는 메서드
 	public static void setDevMode(boolean isDevMode) {
 		MysqlUtil.isDevMode = isDevMode;
 	}
 
+	// 현재 isDevMode값을 리턴하는 메서드
 	public static boolean isDevMode() {
 		return isDevMode;
 	}
 
+	// 해당 변수를 인스턴트 변수에 저장하는 메서드
 	public static void setDBInfo(String dbHost, String dbLoginId, String dbLoginPw, String dbName) {
 		MysqlUtil.dbHost = dbHost;
 		MysqlUtil.dbLoginId = dbLoginId;
@@ -43,6 +46,7 @@ public class MysqlUtil {
 		MysqlUtil.dbName = dbName;
 	}
 
+	// 연결 닫기
 	public static void closeConnection() {
 		long currentThreadId = Thread.currentThread().getId();
 
@@ -63,10 +67,14 @@ public class MysqlUtil {
 		connections.remove(currentThreadId);
 	}
 
+	// DB에 연결
 	private static Connection getConnection() {
+		// 현재 쓰레드 아이디를 넣는다
 		long currentThreadId = Thread.currentThread().getId();
 
+		// 이전에 현재 쓰레드를 요청 했는지 확인
 		if (connections.containsKey(currentThreadId) == false) {
+			// false일 경우 DB연결
 			try {
 				Class.forName("com.mysql.cj.jdbc.Driver");
 			} catch (ClassNotFoundException e) {
@@ -75,10 +83,13 @@ public class MysqlUtil {
 
 			Connection connection = null;
 
+			// url를 만든다
 			String url = "jdbc:mysql://" + dbHost + "/" + dbName
 					+ "?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul&useOldAliasMetadataBehavior=true&zeroDateTimeNehavior=convertToNull&connectTimeout=60";
 			try {
+				// DB 연결
 				connection = DriverManager.getConnection(url, dbLoginId, dbLoginPw);
+				// currentThreadId, connection 넣는다
 				connections.put(currentThreadId, connection);
 
 			} catch (SQLException e) {
@@ -90,10 +101,12 @@ public class MysqlUtil {
 		return connections.get(currentThreadId);
 	}
 
+	// DB에서 selectRow 값을 가져오는 메서드
 	public static <T> T selectRow(SecSql sql) {
 		return (T) selectRow(sql, Map.class);
 	}
 
+	// DB에서 selectRow 값을 가져오는 메서드
 	public static <T> T selectRow(SecSql sql, Class<T> cls) {
 		List<T> rows = selectRows(sql, cls);
 
@@ -104,10 +117,12 @@ public class MysqlUtil {
 		return rows.get(0);
 	}
 
+	// DB에서 selectRows 값을 가져오는 메서드
 	public static <T> List<T> selectRows(SecSql sql) {
 		return (List<T>) selectRows(sql, Map.class);
 	}
 
+	// DB에서 selectRows 값을 가져오는 메서드
 	public static <T> List<T> selectRows(SecSql sql, Class<T> cls) throws MysqlUtilException {
 		ObjectMapper om = new ObjectMapper();
 		List<T> rows = new ArrayList<>();
@@ -176,6 +191,7 @@ public class MysqlUtil {
 		return rows;
 	}
 
+	// DB의 row값이 정수형일 경우 반환해주는 메서드
 	public static int selectRowIntValue(SecSql sql) {
 		Map<String, Object> row = selectRow(sql);
 
@@ -186,6 +202,7 @@ public class MysqlUtil {
 		return -1;
 	}
 
+	// DB의 row값이 문자형일 경우 반환해주는 메서드
 	public static String selectRowStringValue(SecSql sql) {
 		Map<String, Object> row = selectRow(sql);
 
@@ -206,6 +223,7 @@ public class MysqlUtil {
 		return false;
 	}
 
+	// DB에 row를 생성하는 메서드
 	public static int insert(SecSql sql) {
 		int id = -1;
 
@@ -248,6 +266,7 @@ public class MysqlUtil {
 		return id;
 	}
 
+	// DB의 rows 값을 수정해주는 메서드
 	public static int update(SecSql sql) {
 		int affectedRows = 0;
 
@@ -273,6 +292,7 @@ public class MysqlUtil {
 		return affectedRows;
 	}
 
+	// DB에 해당 rows를 삭제하는 메서드
 	public static int delete(SecSql sql) {
 		return update(sql);
 	}
