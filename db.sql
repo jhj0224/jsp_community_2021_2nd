@@ -22,6 +22,15 @@ updateDate = NOW(),
 title = '제목2',
 `body` = '내용2';
 
+# 좋아요
+CREATE TABLE `articleLike` (
+    id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    regDate DATETIME NOT NULL,    
+    articleId INT(10) UNSIGNED NOT NULL,
+    memberId INT(10) UNSIGNED NOT NULL,
+    `point` TINYINT(1) UNSIGNED NOT NULL    
+);
+
 # 회원 테이블 생성
 CREATE TABLE `member` (
     id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,

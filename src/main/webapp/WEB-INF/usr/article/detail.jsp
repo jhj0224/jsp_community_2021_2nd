@@ -19,14 +19,12 @@
 
 				<div class="py-4">
 					<div class="grid gap-3" style="grid-template-columns: 100px 1fr;">
-						<div>
-							<img class="rounded-full w-full"
-								src="https://i.pravatar.cc/200?img=37" alt="">
-						</div>
+						
 						<div>
 							<span class="badge badge-outline">제목</span>
 							<div>${article.titleForPrint}</div>
 						</div>
+												
 					</div>
 
 					<div class="mt-3 grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
@@ -47,17 +45,13 @@
 							<span class="badge">수정날짜</span> <span
 								class="text-gray-600 text-light">${article.updateDate}</span>
 						</div>
-					</div>
-
+						
+						
+					
 					<div
 						class="block mt-3 hover:underline cursor-pointer col-span-1 sm:col-span-2 xl:col-span-3">
 						<span class="badge badge-outline">본문</span>
-
-						<div class="mt-2">
-							<img class="rounded" src="https://picsum.photos/id/237/300/300"
-								alt="" />
-						</div>
-
+						
 						<div>${article.bodySummaryForPrint}</div>
 					</div>
 					
@@ -73,6 +67,10 @@
 								<span><i class="fas fa-trash-alt"></i></span> <span>삭제</span>
 							</a>
 						</c:if>
+						<a onclick="if ( !confirm('추천하시겠습니까?') ) return false;"
+								href="../article/doLike?id=${article.id}" class="btn btn-link">
+								<span><i class="far fa-thumbs-up"></i></span> <span>좋아요</span>
+							</a>
 					</div>
 				</div>
 			</div>

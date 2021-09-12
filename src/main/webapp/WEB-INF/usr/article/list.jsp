@@ -52,9 +52,7 @@
 
 					<div class="py-4">
 						<div class="grid gap-3" style="grid-template-columns: 100px 1fr;">
-							<a href="${detailUri}">
-								<img class="rounded-full w-full" src="https://i.pravatar.cc/200?img=37" alt="">
-							</a>
+							
 							<a href="${detailUri}" class="hover:underline cursor-pointer">
 								<span class="badge badge-outline">제목</span>
 								<div class="line-clamp-3">${article.titleForPrint}</div>
@@ -82,11 +80,7 @@
 
 						<a href="${detailUri}" class="block mt-3 hover:underline cursor-pointer col-span-1 sm:col-span-2 xl:col-span-3">
 							<span class="badge badge-outline">본문</span>
-
-							<div class="mt-2">
-								<img class="rounded" src="https://picsum.photos/id/237/300/300" alt="" />
-							</div>
-
+							
 							<div class="line-clamp-3">${article.bodySummaryForPrint}</div>
 						</a>
 					</div>
