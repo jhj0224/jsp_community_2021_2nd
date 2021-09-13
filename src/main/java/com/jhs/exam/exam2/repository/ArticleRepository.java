@@ -29,7 +29,7 @@ public class ArticleRepository implements ContainerComponent {
 	}
 
 	// 해당 변수에 맞는 게시물을 DB에서 찾아 리턴하는 함수
-	public List<Article> getForPrintArticles(int boardId, String searchKeywordTypeCode, String searchKeyword, int limitFrom, int limitTake) {
+	public List<Article> getForPrintArticles(int limitPage, int limitTake, String searchKeywordTypeCode, String searchKeyword, int boardId) {
 		SecSql sql = new SecSql();
 		sql.append("SELECT A.*");
 		sql.append(", IFNULL(M.nickname, '삭제된회원') AS extra__writerName");
@@ -64,7 +64,7 @@ public class ArticleRepository implements ContainerComponent {
 		}
 		
 		sql.append("ORDER BY A.id DESC");
-		sql.append("LIMIT ?, ?", limitFrom, limitTake);
+		sql.append("LIMIT ?, ?", limitPage, limitTake);
 		
 		return MysqlUtil.selectRows(sql, Article.class);
 	}
@@ -72,10 +72,23 @@ public class ArticleRepository implements ContainerComponent {
 	// id번 게시물을 DB에서 찾아 리턴하는 함수
 	public Article getForPrintArticleById(int id) {
 		SecSql sql = new SecSql();
-		sql.append("SELECT A.*");
+		sql.append("SELECT *");
+		sql.append(", IFNULL(M.nickname, '삭제된회원') AS extra__writerName");
+		sql.append(", B.name AS extra_boardName");
+		sql.append(", IFNULL(SUM(L.point), 0) AS extra__likePoint");
+		sql.append(", IFNULL(SUM(IF(L.point > 0, L.point, 0)), 0) AS extra__likeOnlyPoint");
+		sql.append(", IFNULL(SUM(IF(L.point < 0, L.point * -1, 0)), 0) AS extra__dislikeOnlyPoint");
 		sql.append("FROM article AS A");
+		sql.append("LEFT JOIN `member` AS M");
+		sql.append("ON A.memberId = M.id");
+		sql.append("INNER JOIN board AS B");
+		sql.append("ON A.boardId = B.id");
+		sql.append("LEFT JOIN islike AS L");
+		sql.append("ON L.relTypeCode = 'article'");
+		sql.append("AND A.id = L.relId");
 		sql.append("WHERE A.id = ?", id);
-		
+		sql.append("GROUP BY A.id");
+
 		return MysqlUtil.selectRow(sql, Article.class);
 	}
 

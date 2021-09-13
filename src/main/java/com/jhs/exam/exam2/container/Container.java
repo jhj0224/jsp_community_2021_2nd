@@ -14,10 +14,12 @@ import com.jhs.exam.exam2.interceptor.NeedLoginInterceptor;
 import com.jhs.exam.exam2.interceptor.NeedLogoutInterceptor;
 import com.jhs.exam.exam2.repository.ArticleRepository;
 import com.jhs.exam.exam2.repository.BoardRepository;
+import com.jhs.exam.exam2.repository.LikeRepository;
 import com.jhs.exam.exam2.repository.MemberRepository;
 import com.jhs.exam.exam2.service.ArticleService;
 import com.jhs.exam.exam2.service.BoardService;
 import com.jhs.exam.exam2.service.EmailService;
+import com.jhs.exam.exam2.service.LikeService;
 import com.jhs.exam.exam2.service.MemberService;
 
 // 객체를 저장하는 곳, 크기를 지정할 필요없이 요소가 추가될 때마다 크기를 동적으로 증가시킴 
@@ -47,6 +49,10 @@ public class Container {
 	public static AdmHomeController admHomeController;
 
 	public static EmailService emailService;
+
+	public static LikeService likeService;
+
+	public static LikeRepository likeRepository;
 
 	public static void init() {
 		containerComponents = new ArrayList<>();
