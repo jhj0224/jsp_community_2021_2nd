@@ -62,10 +62,12 @@ public class Container {
 		memberRepository = addContainerComponent(new MemberRepository());
 		boardRepository = addContainerComponent(new BoardRepository());
 		articleRepository = addContainerComponent(new ArticleRepository());
+		likeRepository = addContainerComponent(new LikeRepository());
 		
 		memberService = addContainerComponent(new MemberService());
 		boardService = addContainerComponent(new BoardService());
 		articleService = addContainerComponent(new ArticleService());
+		likeService = addContainerComponent(new LikeService());
 
 		beforeActionInterceptor = addContainerComponent(new BeforeActionInterceptor());
 		needLoginInterceptor = addContainerComponent(new NeedLoginInterceptor());
