@@ -23,12 +23,14 @@ title = '제목2',
 `body` = '내용2';
 
 # 좋아요
-CREATE TABLE `articleLike` (
+CREATE TABLE `IsLike` (
     id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    regDate DATETIME NOT NULL,    
-    articleId INT(10) UNSIGNED NOT NULL,
+    regDate DATETIME NOT NULL,
+    updateDate DATETIME NOT NULL,    
+    `relTypeCode` CHAR(20) NOT NULL,
+    `relId` INT(10) UNSIGNED NOT NULL,
     memberId INT(10) UNSIGNED NOT NULL,
-    `point` TINYINT(1) UNSIGNED NOT NULL    
+    `point` SMALLINT(1) NOT NULL    
 );
 
 # 회원 테이블 생성
