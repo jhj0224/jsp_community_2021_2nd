@@ -27,7 +27,7 @@ public class ArticleService implements ContainerComponent {
 		return ResultData.from("S-1", Ut.f("`%d`번 게시물이 작성되었습니다.", id), "id", id);
 	}
 	
-	// 해당 변수를 받아 요구에 맞는 게시물리스트르 리턴하는 메서드
+	// 해당 변수를 받아 요구에 맞는 게시물리스트로 리턴하는 메서드
 	public List<Article> getForPrintArticles(Member actor, int itemsCountInAPage, int page,
 			String searchKeywordTypeCode, String searchKeyword, int boardId) {
 		int limitPage = (page - 1) * itemsCountInAPage;
