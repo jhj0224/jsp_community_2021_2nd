@@ -61,7 +61,7 @@ public class UsrMemberController extends Controller {
 	private void actionGetData(Rq rq) {
 		rq.json(Ut.toJson(Ut.mapOf("age", 11, "name", "홍길동"), ""));
 	}
-	
+
 	private void actionGetCheckValidLoginId(Rq rq) {
 		String loginId = rq.getParam("loginId", "");
 
