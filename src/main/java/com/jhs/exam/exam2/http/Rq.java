@@ -55,6 +55,12 @@ public class Rq {
 	public boolean isNotLogined() {
 		return isLogined == false;
 	}
+	
+	public boolean isAjax() {
+		String ajax = getParam("ajax", "N");
+
+		return ajax.equals("Y");
+	}
 
 	public Rq(HttpServletRequest req, HttpServletResponse resp) {
 		// 들어오는 파리미터를 UTF-8로 해석

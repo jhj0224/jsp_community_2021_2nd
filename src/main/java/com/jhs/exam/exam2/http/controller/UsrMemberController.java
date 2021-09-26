@@ -18,6 +18,9 @@ public class UsrMemberController extends Controller {
 	@Override
 	public void performAction(Rq rq) {
 		switch (rq.getActionMethodName()) {
+		case "getData":
+			actionGetData(rq);
+			break;
 		case "login":
 			actionShowLogin(rq);
 			break;
@@ -53,6 +56,10 @@ public class UsrMemberController extends Controller {
 			rq.println("존재하지 않는 페이지 입니다.");
 			break;
 		}
+	}
+	
+	private void actionGetData(Rq rq) {
+		rq.json(Ut.toJson(Ut.mapOf("age", 11, "name", "홍길동"), ""));
 	}
 	
 	private void actionGetCheckValidLoginId(Rq rq) {

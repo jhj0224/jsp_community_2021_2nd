@@ -1,5 +1,6 @@
 package com.jhs.exam.exam2.interceptor;
 
+import com.jhs.exam.exam2.dto.ResultData;
 import com.jhs.exam.exam2.http.Rq;
 
 public class NeedLogoutInterceptor extends Interceptor {
@@ -20,8 +21,14 @@ public class NeedLogoutInterceptor extends Interceptor {
 		case "/usr/member/doFindLoginId":
 		case "/usr/member/findLoginPw":
 		case "/usr/member/doFindLoginPw":
+		case "/usr/member/getCheckValidLoginId":
 			if (rq.isLogined()) {
-				rq.replace("로그아웃 후 이용해주세요.", "../home/main");
+				if ( rq.isAjax() ) {
+					rq.json(ResultData.from("F-B", "로그아웃 후 이용해주세요."));					
+				}
+				else {
+					rq.replace("로그아웃 후 이용해주세요.", "../home/main");
+				}
 
 				return false;
 			}
