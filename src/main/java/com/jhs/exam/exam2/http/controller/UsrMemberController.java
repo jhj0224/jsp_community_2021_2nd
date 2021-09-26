@@ -45,12 +45,34 @@ public class UsrMemberController extends Controller {
 		case "doFindLoginPw":
 			actionDoFindLoginPw(rq);
 			break;
+		case "getCheckValidLoginId":
+			actionGetCheckValidLoginId(rq);
+			break;
 		// 일치하지 않을시 오류메세지 출력후 break;	
 		default:
 			rq.println("존재하지 않는 페이지 입니다.");
 			break;
 		}
-	}	
+	}
+	
+	private void actionGetCheckValidLoginId(Rq rq) {
+		String loginId = rq.getParam("loginId", "");
+
+		if (loginId.length() == 0) {
+			rq.json(ResultData.from("F-1", "loginId(을)를 입력해주세요."));
+			return;
+		}
+
+		Member oldMember = memberService.getMemberByLoginId(loginId);
+
+		if (oldMember != null) {
+			rq.json(ResultData.from("F-2", Ut.f("%s(은)는 이미 사용중인 로그인아이디입니다.", loginId), "loginId", loginId));
+			return;
+		}
+
+		rq.json(ResultData.from("S-1", Ut.f("%s(은)는 사용가능한 로그인아이디입니다.", loginId), "loginId", loginId));
+		return;
+	}
 	
 	// 로그인아이디 찾기 페이지로 이동
 	private void actionShowFindLoginId(Rq rq) {

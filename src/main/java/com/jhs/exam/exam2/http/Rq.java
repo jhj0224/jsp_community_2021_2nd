@@ -299,4 +299,8 @@ public class Rq {
 	public boolean isNotAdmin() {
 		return !isAdmin;
 	}
+	
+	public void json(Object obj) {
+		print(Ut.toJson(obj, "{}"));
+	}
 }

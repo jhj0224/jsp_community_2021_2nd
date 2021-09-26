@@ -26,6 +26,7 @@ public class NeedLoginInterceptor extends Interceptor {
 		case "/usr/member/doLogin":
 		case "/usr/member/join":
 		case "/usr/member/doJoin":
+		case "/usr/member/getCheckValidLoginId":
 		case "/usr/member/findLoginId":
 		case "/usr/member/doFindLoginId":
 		case "/usr/member/findLoginPw":
