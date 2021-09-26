@@ -12,12 +12,11 @@
         <a>
           <i class="fas fa-home"></i>
         </a>
-        <span>최신 게시물</span>
+        <span>홈</span>
       </div>
-
-      <div class="px-4 py-4">
-        <h1>최신 게시물</h1>
-      </div>
+      
+        <img src="https://cdn.clien.net/web/api/file/F01/1907693/93004e3546cf40718ed.JPG?w=780&h=30000">
+      </div>      
     </div>
   </div>
 </section>
