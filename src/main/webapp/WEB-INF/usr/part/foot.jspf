@@ -3,9 +3,9 @@
 		<footer class="bottom-bar mt-4 h-10 flex-shrink-0 flex justify-center">
 			<a href="../../" class="top-bar__logo flex items-center px-4 hover:underline hover:text-red-500">
 				<span>
-					<i class="far fa-lemon"></i>
+					<i class="fas fa-star"></i>
 				</span>
-				<span class="font-bold">&nbsp;Lemon</span>
+				<span class="font-bold">&nbsp;Brillante</span>
 			</a>
 		</footer>
 	</div>
