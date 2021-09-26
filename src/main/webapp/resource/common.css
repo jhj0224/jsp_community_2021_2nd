@@ -44,7 +44,7 @@ body {
 }
 
 .card-title {
-  background-color: rgb(87, 13, 248);
+  background-color: hsla(var(--p) / var(--tw-bg-opacity, 1));
   color: white;
   text-align: center;
   height: var(--card-title_height);

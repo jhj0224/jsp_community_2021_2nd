@@ -13,10 +13,12 @@ import com.jhs.exam.exam2.util.Ut;
 public class ArticleService implements ContainerComponent {
 	private ArticleRepository articleRepository;
 	private LikeService likeService;
+	private MemberService memberService;
 
 	public void init() {
 		articleRepository = Container.articleRepository;
 		likeService = Container.likeService;
+		memberService = Container.memberService;
 	}
 
 	public ResultData write(int boardId, int memberId, String title, String body) {
@@ -130,6 +132,10 @@ public class ArticleService implements ContainerComponent {
 		// 접속한 member의 id와 게시물 작성자(memberId)를 변수에 저장
 		int memberId = member.getId();
 		int writerMemberId = article.getMemberId();
+		
+		if ( memberService.isAdmin(member) ) {
+			return ResultData.from("S-2", "관리자권한으로 삭제가 가능합니다.");
+		}
 
 		// 접속하 멤버가 관리자이면 S-0 저장후 리턴
 		if (member.getAuthLevel() == 7) {
