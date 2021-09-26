@@ -5,3 +5,5 @@ target/
 build/
 bin/
 .factorypath
+
+node_modules

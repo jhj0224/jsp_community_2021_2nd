@@ -3,7 +3,7 @@
 
 <!DOCTYPE html>
 <html>
-<head lang="ko" data-theme="light">
+<head lang="ko" data-theme="mylight">
 <meta charset="UTF-8">
 <title>${pageTitle}${' | '}JSPBOARD</title>
 
@@ -16,14 +16,8 @@
 <!-- 폰트어썸 불러오기 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
-<!-- 데이지 UI 불러오기 -->
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2/dist/tailwind.min.css" rel="stylesheet" type="text/css" />
-<link href="https://cdn.jsdelivr.net/npm/daisyui@1/dist/full.css" rel="stylesheet" type="text/css" />
-
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resource/font.css" />
-</head>
-
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resource/common.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resource/font.css" />
 <script src="${pageContext.request.contextPath}/resource/common.js" defer="defer"></script>
 </head>
 
