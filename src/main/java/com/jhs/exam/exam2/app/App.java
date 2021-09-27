@@ -104,6 +104,6 @@ public class App implements ContainerComponent {
 
 	// 이메일 알림 이름
 	public String getNotifyEmailFromName() {
-		return "준이의 코딩천국 알림";
+		return "Brillante 알림";
 	}
 }
