@@ -5,9 +5,9 @@
 		<header class="flex flex-shrink-0 shadow h-10 font-bold">
 			<a href="../../" class="logo px-4 flex items-center hover:underline hover:text-red-500">
 				<span>
-					<i class="far fa-lemon"></i>
+					<i class="fas fa-star"></i>
 				</span>
-				<span class="flex"> &nbsp;Lemon </span>
+				<span class="flex"> &nbsp;Brillante </span>
 			</a>
 
 			<div class="flex-grow"></div>
