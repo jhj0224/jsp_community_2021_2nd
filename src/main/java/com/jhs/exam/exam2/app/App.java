@@ -55,7 +55,7 @@ public class App implements ContainerComponent {
 
 	// 사이트 이름
 	public String getSiteName() {
-		return "준이의 코딩천국";
+		return "Brillante";
 	}
 
 	// 아래 코드를 실행시키기 위한 기본 코드(프로토콜,도메인,포트 등)
